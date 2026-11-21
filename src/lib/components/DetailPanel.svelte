@@ -2,12 +2,20 @@
 	import type { TimelineEvent } from '#lib/types';
 	import { formatYear } from '#lib/utils/timeline';
 
+	interface Connection {
+		event: TimelineEvent;
+		continentName: string;
+		continentColor: string;
+	}
+
 	interface Props {
 		event: TimelineEvent | null;
+		connections?: Connection[];
+		onSelectEvent?: (event: TimelineEvent) => void;
 		onClose: () => void;
 	}
 
-	let { event, onClose }: Props = $props();
+	let { event, connections = [], onSelectEvent, onClose }: Props = $props();
 </script>
 
 <div class="panel" class:open={!!event}>
@@ -42,6 +50,28 @@
 				<h3 class="section-label">So what?</h3>
 				<p class="body-text">{event.significance}</p>
 			</div>
+
+			{#if connections.length > 0}
+				<div class="section connections">
+					<h3 class="section-label">Connections</h3>
+					<ul class="connection-list">
+						{#each connections as connection (connection.event.id)}
+							<li>
+								<button
+									class="connection"
+									onclick={() => onSelectEvent?.(connection.event)}
+								>
+									<span class="connection-meta">
+										<span class="connection-dot" style="background: {connection.continentColor};"></span>
+										{connection.continentName} · {formatYear(connection.event.year)}
+									</span>
+									<span class="connection-title">{connection.event.title}</span>
+								</button>
+							</li>
+						{/each}
+					</ul>
+				</div>
+			{/if}
 
 			{#if event.wikipediaSlug}
 				<a
@@ -176,6 +206,55 @@
 	}
 
 	.significance .body-text {
+		color: #d0c8c0;
+	}
+
+	.connection-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.connection {
+		width: 100%;
+		text-align: left;
+		background: #15152a;
+		border: 1px solid #2a2a4a;
+		border-radius: 4px;
+		padding: 8px 12px;
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		font: inherit;
+		transition: border-color 0.15s, background 0.15s;
+	}
+
+	.connection:hover,
+	.connection:focus-visible {
+		border-color: #4a4a7a;
+		background: #1a1a32;
+	}
+
+	.connection-meta {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		font-family: 'JetBrains Mono', 'Courier New', monospace;
+		font-size: 11px;
+		color: #7a7a9a;
+	}
+
+	.connection-dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		flex-shrink: 0;
+	}
+
+	.connection-title {
+		font-size: 14px;
 		color: #d0c8c0;
 	}
 

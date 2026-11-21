@@ -29,7 +29,12 @@
 
 	const totalHeight = $derived(BASE_HEIGHT * zoomLevel);
 	const laneWidth = $derived((containerWidth - LEFT_PADDING - RIGHT_PADDING) / continents.length);
-	const maxHalfWidth = $derived((laneWidth / 2) * 0.82);
+	// Bands at full activity nearly touch: 98% of the old 18% inter-band gap is removed.
+	const BAND_FILL = 1 - 0.18 * 0.02;
+	const maxHalfWidth = $derived((laneWidth / 2) * BAND_FILL);
+
+	const DOT_RADIUS = 5;
+	const DOT_SPACING = DOT_RADIUS * 2 + 2; // minimum center-to-center distance between dots
 	const yearLabels = $derived(getYearLabels(totalHeight));
 
 	type BandEvent = TimelineEvent & { x: number; y: number };
@@ -47,14 +52,57 @@
 				continent,
 				path: computeBandPath(continent.activityKeyframes, centerX, maxHalfWidth, totalHeight),
 				centerX,
-				events: continent.events.map((event) => ({
-					...event,
-					x: centerX,
-					y: yearToPixel(event.year, totalHeight)
-				}))
+				events: spreadDots(continent.events, centerX, laneWidth / 2 - DOT_RADIUS - 2)
 			};
 		})
 	);
+
+	// Keep each dot at its exact year (y) and nudge it sideways only as far as needed to avoid
+	// overlapping dots already placed, alternating right/left of the lane center. Dots are placed
+	// in time order, so only recently placed dots within DOT_SPACING vertically can collide.
+	function spreadDots(events: TimelineEvent[], centerX: number, maxOffset: number): BandEvent[] {
+		const sorted = events
+			.map((event) => ({ ...event, x: centerX, y: yearToPixel(event.year, totalHeight) }))
+			.sort((a, b) => a.y - b.y);
+
+		const placed: BandEvent[] = [];
+		let windowStart = 0;
+		const maxSteps = Math.max(0, Math.floor(maxOffset / (DOT_SPACING / 2)));
+
+		for (const dot of sorted) {
+			while (windowStart < placed.length && dot.y - placed[windowStart].y >= DOT_SPACING) {
+				windowStart++;
+			}
+			const neighbors = placed.slice(windowStart);
+
+			// Closest distance from candidate x to any neighbor; Infinity if none nearby.
+			const clearance = (x: number) =>
+				neighbors.reduce((min, n) => Math.min(min, Math.hypot(n.x - x, n.y - dot.y)), Infinity);
+
+			// Candidates: 0, +h, -h, +2h, -2h, ... in half-spacing steps for a tight hex-like packing.
+			let bestX = centerX;
+			let bestClearance = -1;
+			for (let step = 0; step <= maxSteps * 2; step++) {
+				const k = Math.ceil(step / 2) * (step % 2 === 1 ? 1 : -1);
+				const x = centerX + k * (DOT_SPACING / 2);
+				const c = clearance(x);
+				if (c >= DOT_SPACING) {
+					bestX = x;
+					bestClearance = c;
+					break;
+				}
+				// If the lane is too crowded to avoid overlap, settle for the least-overlapping spot.
+				if (c > bestClearance) {
+					bestX = x;
+					bestClearance = c;
+				}
+			}
+
+			dot.x = bestX;
+			placed.push(dot);
+		}
+		return placed;
+	}
 
 	// Zoom via pinch (trackpad) and ctrl/cmd+scroll
 	function handleWheel(e: WheelEvent) {
@@ -207,11 +255,11 @@
 
 			<!-- Event dots -->
 			{#each bandData as band}
-				{#each band.events as event}
+				{#each band.events as event (event.id)}
 					<circle
 						cx={event.x}
 						cy={event.y}
-						r={hoveredEvent?.id === event.id ? 7 : 5}
+						r={hoveredEvent?.id === event.id ? DOT_RADIUS + 2 : DOT_RADIUS}
 						fill={band.continent.color}
 						stroke="#0d0d12"
 						stroke-width="1.5"

@@ -7,6 +7,7 @@ export interface TimelineEvent {
 	significance: string; // The "So what?" answer
 	wikipediaSlug?: string;
 	tags?: string[];
+	related?: string[]; // ids of connected events, usually on other continents
 }
 
 export interface ActivityKeyframe {
