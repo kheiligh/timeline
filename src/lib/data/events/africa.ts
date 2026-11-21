@@ -95,7 +95,7 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Blombos Cave: Symbolic Thought',
 		year: -75_000,
 		description:
-			'Engraved ochre pieces from Blombos Cave, South Africa represent the earliest known evidence of abstract symbolic thinking — geometric patterns deliberately created by humans.',
+			'Engraved ochre pieces from Blombos Cave, South Africa are among the earliest known evidence of abstract symbolic thinking — geometric patterns deliberately created by humans.',
 		significance:
 			'Symbolic thinking is the cognitive leap that makes language, culture, art, and civilization possible. This is where the evidence begins.',
 		wikipediaSlug: 'Blombos_Cave',
@@ -176,7 +176,7 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Unification of Egypt',
 		year: -3100,
 		description:
-			"Pharaoh Narmer unified Upper and Lower Egypt, founding the world's first nation-state and one of history's longest-lasting civilizations.",
+			"Pharaoh Narmer is traditionally credited with unifying Upper and Lower Egypt, founding the world's first nation-state and one of history's longest-lasting civilizations.",
 		significance:
 			"Egypt's unification demonstrated that large populations could be organized under centralized rule — a template for every empire and nation that followed.",
 		wikipediaSlug: 'Narmer',
@@ -198,7 +198,7 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Great Pyramid of Giza',
 		year: -2560,
 		description:
-			'Built for Pharaoh Khufu, the Great Pyramid was the tallest human-made structure on Earth for nearly 4,000 years. It required an estimated 2.3 million stone blocks.',
+			'Built for Pharaoh Khufu, the Great Pyramid was the tallest human-made structure on Earth for more than 3,700 years. It required an estimated 2.3 million stone blocks.',
 		significance:
 			'The Great Pyramid demonstrated the extraordinary organizational capacity of early civilization and became a symbol of human ambition for all of history.',
 		wikipediaSlug: 'Great_Pyramid_of_Giza',
@@ -220,7 +220,7 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Old Kingdom Collapses',
 		year: -2200,
 		description:
-			"A centuries-long drought known as the 4.2-kiloyear event weakened the Nile floods. Egypt's Old Kingdom fragmented into the First Intermediate Period, with texts describing famine and chaos.",
+			"A century-long drought known as the 4.2-kiloyear event weakened the Nile floods. Egypt's Old Kingdom fragmented into the First Intermediate Period, with texts describing famine and chaos.",
 		significance:
 			'The same drought hit Mesopotamia and the Indus. It is one of the clearest early cases of climate shock toppling civilizations across continents at once.',
 		wikipediaSlug: '4.2-kiloyear_event',
@@ -262,7 +262,7 @@ export const africaEvents: TimelineEvent[] = [
 	},
 	{
 		id: 'africa-kadesh-treaty',
-		title: 'First Known Peace Treaty',
+		title: 'Oldest Surviving Peace Treaty',
 		year: -1259,
 		description:
 			"After the inconclusive Battle of Kadesh, Ramesses II and the Hittite king Hattusili III signed a peace treaty. Copies survive in both Egyptian hieroglyphs and Hittite cuneiform.",
@@ -278,7 +278,7 @@ export const africaEvents: TimelineEvent[] = [
 		description:
 			'Under Ramesses III, tomb-builders at Deir el-Medina went unpaid and downed tools, staging sit-ins at temples until grain rations arrived. A papyrus records the events.',
 		significance:
-			"The first documented strike in history is a reminder that workers have always known their power — and that even pharaohs' treasuries ran dry.",
+			"What may be the first documented strike in history is a reminder that workers have always known their power — and that even pharaohs' treasuries ran dry.",
 		wikipediaSlug: 'Deir_el-Medina',
 		tags: ['society', 'economics']
 	},
@@ -321,7 +321,7 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Carthage Founded',
 		year: -814,
 		description:
-			'Phoenician settlers from Tyre founded Carthage on the coast of modern Tunisia. It grew into a commercial empire controlling trade across the western Mediterranean.',
+			'Phoenician settlers from Tyre traditionally founded Carthage on the coast of modern Tunisia. It grew into a commercial empire controlling trade across the western Mediterranean.',
 		significance:
 			'Carthage was the dominant sea power of the western Mediterranean for centuries — and the rival whose destruction made Rome a world empire.',
 		wikipediaSlug: 'Carthage',
@@ -646,7 +646,7 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Kingdom of Mapungubwe',
 		year: 1075,
 		description:
-			"On the Limpopo River, Mapungubwe became southern Africa's first class-divided state, with elites living on a hilltop above commoners. Its famous golden rhinoceros was found in a royal grave.",
+			"On the Limpopo River, Mapungubwe became one of southern Africa's earliest class-divided states, with elites living on a hilltop above commoners. Its famous golden rhinoceros was found in a royal grave.",
 		significance:
 			"Mapungubwe was the forerunner of Great Zimbabwe; under apartheid its finds were downplayed because they contradicted the myth of an empty land before Europeans.",
 		wikipediaSlug: 'Kingdom_of_Mapungubwe',
@@ -716,7 +716,7 @@ export const africaEvents: TimelineEvent[] = [
 		description:
 			'Moroccan scholar Ibn Battuta left Tangier for Mecca and kept traveling for nearly 30 years, covering some 120,000 km through Africa, the Middle East, India, Southeast Asia, and China.',
 		significance:
-			"Ibn Battuta's Rihla is a portrait of the 14th-century Islamic world at its most connected — he traveled three times farther than Marco Polo.",
+			"Ibn Battuta's Rihla is a portrait of the 14th-century Islamic world at its most connected — he traveled nearly five times farther than Marco Polo.",
 		wikipediaSlug: 'Ibn_Battuta',
 		tags: ['exploration', 'culture', 'trade'],
 		related: ['asia-delhi-sultanate']
@@ -806,7 +806,7 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Songhai Empire Rises',
 		year: 1464,
 		description:
-			'Sunni Ali seized Timbuktu and Djenné, building the Songhai Empire. Under Askia Muhammad it became the largest state in African history, with a professional army and standardized weights and measures.',
+			'Sunni Ali seized Timbuktu and Djenné, building the Songhai Empire. Under Askia Muhammad it became one of the largest states in African history, with a professional army and standardized weights and measures.',
 		significance:
 			"Songhai marked the peak of the West African imperial tradition — and its fall would open the region to fragmentation and the slave trade.",
 		wikipediaSlug: 'Songhai_Empire',
@@ -817,7 +817,7 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Elmina Castle Built',
 		year: 1482,
 		description:
-			"The Portuguese built São Jorge da Mina on the Gold Coast, the first European building in sub-Saharan Africa. It began as a gold-trading post and became a holding pen for enslaved people.",
+			"The Portuguese built São Jorge da Mina on the Gold Coast, the oldest surviving European building in sub-Saharan Africa. It began as a gold-trading post and became a holding pen for enslaved people.",
 		significance:
 			"Elmina's dungeons are a pilgrimage site for the African diaspora — the physical start of the 'Door of No Return.'",
 		wikipediaSlug: 'Elmina_Castle',
@@ -1150,7 +1150,7 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Battle of Omdurman',
 		year: 1898,
 		description:
-			"At Omdurman in Sudan, a British-Egyptian force with Maxim machine guns killed some 10,000 Mahdist soldiers while losing fewer than 50 of its own.",
+			"At Omdurman in Sudan, a British-Egyptian force with Maxim machine guns killed some 12,000 Mahdist soldiers while losing fewer than 50 of its own.",
 		significance:
 			"Omdurman showed the brutal technological gap of the colonial era: as Hilaire Belloc wrote, \"We have got the Maxim gun, and they have not.\"",
 		wikipediaSlug: 'Battle_of_Omdurman',
@@ -1184,7 +1184,7 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Maji Maji Rebellion',
 		year: 1905,
 		description:
-			"Peoples of German East Africa rose against forced cotton growing, united by a belief that sacred water (maji) would turn bullets to water. German scorched-earth tactics caused a famine that killed hundreds of thousands.",
+			"Peoples of German East Africa rose against forced cotton growing, united by a belief that sacred water (maji) would turn bullets to water. German scorched-earth tactics caused a famine that killed an estimated 75,000 to 300,000 people.",
 		significance:
 			"Maji Maji was one of the first multi-ethnic uprisings against colonial rule — later celebrated by Tanzanian nationalists as the root of their independence movement.",
 		wikipediaSlug: 'Maji_Maji_Rebellion',

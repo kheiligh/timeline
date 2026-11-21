@@ -1,1 +1,1052 @@
-{}
+{
+	"africa-acheulean": {
+		"lastChecked": "2026-11-21",
+		"note": "Kokiselei 1.76 Ma matches article (West Turkana), but article also reports Acheulean finds at 1.95 Ma (Ethiopia, 2023) and \"about 2 million years ago\". Left unchanged.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Acheulean"
+		],
+		"status": "disputed"
+	},
+	"africa-adwa": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Battle_of_Adwa"
+		],
+		"status": "ok"
+	},
+	"africa-afcfta": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/African_Continental_Free_Trade_Area"
+		],
+		"status": "ok"
+	},
+	"africa-afonso-letters": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Afonso_I_of_Kongo"
+		],
+		"status": "ok"
+	},
+	"africa-african-union": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/African_Union"
+		],
+		"status": "ok"
+	},
+	"africa-akhenaten": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Akhenaten"
+		],
+		"status": "ok"
+	},
+	"africa-aksum": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Kingdom_of_Aksum"
+		],
+		"status": "ok"
+	},
+	"africa-al-qarawiyyin": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/University_of_al-Qarawiyyin"
+		],
+		"status": "ok"
+	},
+	"africa-alexandria": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Alexandria"
+		],
+		"status": "ok"
+	},
+	"africa-algeria": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/French_conquest_of_Algeria"
+		],
+		"status": "ok"
+	},
+	"africa-algerian-war": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Algerian_War"
+		],
+		"status": "ok"
+	},
+	"africa-almoravids": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Almoravid_dynasty"
+		],
+		"status": "ok"
+	},
+	"africa-anc": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/African_National_Congress"
+		],
+		"status": "ok"
+	},
+	"africa-apartheid": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Apartheid"
+		],
+		"status": "ok"
+	},
+	"africa-arab-conquest-egypt": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Arab_conquest_of_Egypt"
+		],
+		"status": "ok"
+	},
+	"africa-arab-spring": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Tunisian_revolution"
+		],
+		"status": "ok"
+	},
+	"africa-ashanti": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Asante_Empire"
+		],
+		"status": "ok"
+	},
+	"africa-aswan": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Aswan_High_Dam"
+		],
+		"status": "ok"
+	},
+	"africa-atlantic-slave-trade": {
+		"lastChecked": "2026-11-21",
+		"note": "Article: ~12.75 million loaded, up to 2 million died (text says ~12.5M, ~2M); estimates vary 12-12.75M. The claim that 1526 was the first direct Africa-Americas voyage is not in the article. Left unchanged.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Atlantic_slave_trade"
+		],
+		"status": "disputed"
+	},
+	"africa-augustine": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Augustine_of_Hippo"
+		],
+		"status": "ok"
+	},
+	"africa-bantu-expansion": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article. Bantu languages article: \"around 350 million\" speakers (2015).",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Bantu_expansion",
+			"https://en.wikipedia.org/wiki/Bantu_languages"
+		],
+		"status": "ok"
+	},
+	"africa-benin": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Kingdom_of_Benin",
+			"https://en.wikipedia.org/wiki/Benin_Bronzes"
+		],
+		"status": "ok"
+	},
+	"africa-benin-expedition": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Benin_Expedition_of_1897"
+		],
+		"status": "ok"
+	},
+	"africa-berlin-conference": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Berlin_Conference"
+		],
+		"status": "ok"
+	},
+	"africa-biafra": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Nigerian_Civil_War"
+		],
+		"status": "ok"
+	},
+	"africa-black-death": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Black_Death_in_the_Middle_East"
+		],
+		"status": "ok"
+	},
+	"africa-blombos": {
+		"lastChecked": "2026-11-21",
+		"note": "Engraved ochre ~75ka is among the earliest, but older ochre/engraving claims exist (e.g. Pinnacle Point ochre ~164ka); softened \"the earliest\" to \"among the earliest\".",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Blombos_Cave"
+		],
+		"status": "disputed"
+	},
+	"africa-boer-war": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Second_Boer_War"
+		],
+		"status": "ok"
+	},
+	"africa-cape-colony": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Dutch_Cape_Colony"
+		],
+		"status": "ok"
+	},
+	"africa-carthage": {
+		"lastChecked": "2026-11-21",
+		"note": "Article: founder Dido/Elissa is legendary, historicity questioned; 814 BCE is the traditional date (not given in article). Added \"traditionally\".",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Carthage"
+		],
+		"status": "disputed"
+	},
+	"africa-carthage-destroyed": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Third_Punic_War"
+		],
+		"status": "ok"
+	},
+	"africa-ceuta": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Portuguese_conquest_of_Ceuta"
+		],
+		"status": "ok"
+	},
+	"africa-cleopatra": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Cleopatra"
+		],
+		"status": "ok"
+	},
+	"africa-congo-free-state": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Congo_Free_State"
+		],
+		"status": "ok"
+	},
+	"africa-congo-wars": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Second_Congo_War"
+		],
+		"status": "ok"
+	},
+	"africa-dahomey": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Dahomey"
+		],
+		"status": "ok"
+	},
+	"africa-deir-el-medina-strike": {
+		"lastChecked": "2026-11-21",
+		"note": "Article: \"may have been the first sit-down strike action in recorded history\". Significance hedged; title still says \"First Recorded\" (suggest hedging).",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Deir_el-Medina"
+		],
+		"status": "disputed"
+	},
+	"africa-dias-cape": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Bartolomeu_Dias"
+		],
+		"status": "ok"
+	},
+	"africa-djoser": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Pyramid_of_Djoser"
+		],
+		"status": "ok"
+	},
+	"africa-ebola": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Western_African_Ebola_epidemic"
+		],
+		"status": "ok"
+	},
+	"africa-egypt-unification": {
+		"lastChecked": "2026-11-21",
+		"note": "Article: Narmer \"is often credited\" with unification; Menes/Narmer identity and the role of predecessors (Scorpion I, Iry-Hor) debated. Added \"traditionally credited\". Year 3100 matches \"fl. c. 3100 BC\".",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Narmer"
+		],
+		"status": "disputed"
+	},
+	"africa-elmina": {
+		"lastChecked": "2026-11-21",
+		"note": "\"it was the first trading post built on the Gulf of Guinea and is the oldest extant European building in Sub-Saharan Africa\" (first -> oldest surviving European building)",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Elmina_Castle"
+		],
+		"status": "fixed"
+	},
+	"africa-eratosthenes": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Eratosthenes"
+		],
+		"status": "ok"
+	},
+	"africa-euclid": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Euclid's_Elements"
+		],
+		"status": "ok"
+	},
+	"africa-fatimid-cairo": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Fatimid_Caliphate"
+		],
+		"status": "ok"
+	},
+	"africa-fire": {
+		"lastChecked": "2026-11-21",
+		"note": "Article cites 2026 study dating Wonderwerk fire use to 1.07-1.79 Ma and notes hominins may have maintained natural fire rather than made it; \"about one million years\" and \"deliberately using\" are conservative/contested. Left unchanged.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Wonderwerk_Cave"
+		],
+		"status": "disputed"
+	},
+	"africa-first-hijra": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Migration_to_Abyssinia"
+		],
+		"status": "ok"
+	},
+	"africa-gerd": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Grand_Ethiopian_Renaissance_Dam"
+		],
+		"status": "ok"
+	},
+	"africa-ghana-empire": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Ghana_Empire"
+		],
+		"status": "ok"
+	},
+	"africa-ghana-independence": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Kwame_Nkrumah"
+		],
+		"status": "ok"
+	},
+	"africa-great-pyramid": {
+		"lastChecked": "2026-11-21",
+		"note": "\"the world's tallest human-made structure for more than 3,700 years\" (tallest-structure duration 4,000 -> 3,700)",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza"
+		],
+		"status": "fixed"
+	},
+	"africa-great-trek": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Great_Trek"
+		],
+		"status": "ok"
+	},
+	"africa-great-zimbabwe": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Great_Zimbabwe"
+		],
+		"status": "ok"
+	},
+	"africa-green-belt": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Green_Belt_Movement"
+		],
+		"status": "ok"
+	},
+	"africa-green-sahara": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/African_humid_period"
+		],
+		"status": "ok"
+	},
+	"africa-hanno": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Hanno_the_Navigator"
+		],
+		"status": "ok"
+	},
+	"africa-hatshepsut": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Hatshepsut"
+		],
+		"status": "ok"
+	},
+	"africa-herero-genocide": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Herero_and_Nama_genocide"
+		],
+		"status": "ok"
+	},
+	"africa-hieroglyphs": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Egyptian_hieroglyphs"
+		],
+		"status": "ok"
+	},
+	"africa-hiv-origin": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/HIV/AIDS"
+		],
+		"status": "ok"
+	},
+	"africa-homo-erectus": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Homo_erectus"
+		],
+		"status": "ok"
+	},
+	"africa-homo-sapiens": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Jebel_Irhoud"
+		],
+		"status": "ok"
+	},
+	"africa-hyksos": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Hyksos"
+		],
+		"status": "ok"
+	},
+	"africa-ibn-al-haytham": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Ibn_al-Haytham"
+		],
+		"status": "ok"
+	},
+	"africa-ibn-battuta": {
+		"lastChecked": "2026-11-21",
+		"note": "\"Ibn Battuta travelled ... around 117,000 km, surpassing Zheng He with about 50,000 km and Marco Polo with 24,000 km\" (Marco Polo comparison: three times -> nearly five times)",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Ibn_Battuta"
+		],
+		"status": "fixed"
+	},
+	"africa-ibn-khaldun": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Muqaddimah"
+		],
+		"status": "ok"
+	},
+	"africa-ife": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Bronze_Head_from_Ife"
+		],
+		"status": "ok"
+	},
+	"africa-igbo-ukwu": {
+		"lastChecked": "2026-11-21",
+		"note": "Article confirms lost-wax casting and ~850 AD dating but not the \"thousands of glass beads\" claim.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Igbo-Ukwu"
+		],
+		"status": "unverifiable"
+	},
+	"africa-independence": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Year_of_Africa"
+		],
+		"status": "ok"
+	},
+	"africa-isandlwana": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Battle_of_Isandlwana"
+		],
+		"status": "ok"
+	},
+	"africa-ishango-bone": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Ishango_bone"
+		],
+		"status": "ok"
+	},
+	"africa-italy-ethiopia": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Second_Italo-Ethiopian_War"
+		],
+		"status": "ok"
+	},
+	"africa-kadesh-treaty": {
+		"lastChecked": "2026-11-21",
+		"note": "\"It is the oldest known surviving peace treaty (though the much older treaty between Ebla and Abarsal may be the earliest recorded diplomatic treaty in human history)\" (title \"First Known\" -> \"Oldest Surviving\")",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Egyptian–Hittite_peace_treaty"
+		],
+		"status": "fixed"
+	},
+	"africa-kanem": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Kanem–Bornu_Empire"
+		],
+		"status": "ok"
+	},
+	"africa-kerma": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Kerma_culture"
+		],
+		"status": "ok"
+	},
+	"africa-kimberley": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Big_Hole"
+		],
+		"status": "ok"
+	},
+	"africa-kongo": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Kingdom_of_Kongo"
+		],
+		"status": "ok"
+	},
+	"africa-kush-pharaohs": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Twenty-fifth_Dynasty_of_Egypt"
+		],
+		"status": "ok"
+	},
+	"africa-lalibela": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Lalibela"
+		],
+		"status": "ok"
+	},
+	"africa-liberia": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Liberia"
+		],
+		"status": "ok"
+	},
+	"africa-library-alexandria": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Library_of_Alexandria"
+		],
+		"status": "ok"
+	},
+	"africa-lucy": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Lucy_(hominid)"
+		],
+		"status": "ok"
+	},
+	"africa-lumumba": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Patrice_Lumumba"
+		],
+		"status": "ok"
+	},
+	"africa-madagascar": {
+		"lastChecked": "2026-11-21",
+		"note": "Article confirms Austronesian (South Borneo) settlement and Bantu mixing; the \"20,000 km to Easter Island\" claim and the year 500 are not covered.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/History_of_Madagascar"
+		],
+		"status": "unverifiable"
+	},
+	"africa-maji-maji": {
+		"lastChecked": "2026-11-21",
+		"note": "\"The war lasted from 1905 to 1907, during which 75,000 to 300,000 died, overwhelmingly from famine.\" (death toll: hundreds of thousands -> 75,000 to 300,000)",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Maji_Maji_Rebellion"
+		],
+		"status": "fixed"
+	},
+	"africa-mali-sundiata": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Sundiata_Keita"
+		],
+		"status": "ok"
+	},
+	"africa-mandela": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Nelson_Mandela"
+		],
+		"status": "ok"
+	},
+	"africa-mansa-musa": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Mansa_Musa"
+		],
+		"status": "ok"
+	},
+	"africa-mapungubwe": {
+		"lastChecked": "2026-11-21",
+		"note": "Article: \"traditionally assumed to have been the first state in Southern Africa\"; Mapela Hill shows sacral kingship nearly 200 years earlier. Changed \"first\" to \"one of the earliest\".",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Kingdom_of_Mapungubwe"
+		],
+		"status": "disputed"
+	},
+	"africa-mau-mau": {
+		"lastChecked": "2026-11-21",
+		"note": "Article does not state \">100,000 detained\" in extracted text; 2013 compensation not checked.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Mau_Mau_rebellion"
+		],
+		"status": "unverifiable"
+	},
+	"africa-meroe": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Meroë"
+		],
+		"status": "ok"
+	},
+	"africa-mpesa": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/M-PESA"
+		],
+		"status": "ok"
+	},
+	"africa-muhammad-ali": {
+		"lastChecked": "2026-11-21",
+		"note": "\"First non-Western state to attempt state-led industrialization\" is not in the article (framing claim).",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Muhammad_Ali_of_Egypt"
+		],
+		"status": "unverifiable"
+	},
+	"africa-mutapa": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Mutapa_Empire"
+		],
+		"status": "ok"
+	},
+	"africa-nabta-playa": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Nabta_Playa"
+		],
+		"status": "ok"
+	},
+	"africa-napoleon-egypt": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/French_invasion_of_Egypt_and_Syria"
+		],
+		"status": "ok"
+	},
+	"africa-natives-land-act": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Natives_Land_Act,_1913"
+		],
+		"status": "ok"
+	},
+	"africa-new-world-crops": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Columbian_exchange"
+		],
+		"status": "ok"
+	},
+	"africa-nok": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Nok_culture"
+		],
+		"status": "ok"
+	},
+	"africa-nzinga": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Nzinga_of_Ndongo_and_Matamba"
+		],
+		"status": "ok"
+	},
+	"africa-oau": {
+		"lastChecked": "2026-11-21",
+		"note": "Article says both \"33 signatory governments\" and \"founded ... by 32 African states\". Text uses thirty-two. Left unchanged.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Organisation_of_African_Unity"
+		],
+		"status": "disputed"
+	},
+	"africa-old-kingdom-collapse": {
+		"lastChecked": "2026-11-21",
+		"note": "\"Starting around 2200 BC, it most likely lasted the entire 22nd century BC.\" (drought duration: centuries-long -> century-long)",
+		"sources": [
+			"https://en.wikipedia.org/wiki/4.2-kiloyear_event"
+		],
+		"status": "fixed"
+	},
+	"africa-oldowan": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Oldowan"
+		],
+		"status": "ok"
+	},
+	"africa-omdurman": {
+		"lastChecked": "2026-11-21",
+		"note": "\"Around 12,000 of the Mahdists were killed, 13,000 wounded and 5,000 taken prisoner. Kitchener's force lost 47 men killed\" (Mahdist dead 10,000 -> 12,000)",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Battle_of_Omdurman"
+		],
+		"status": "fixed"
+	},
+	"africa-ottoman-egypt": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Ottoman–Mamluk_War_(1516–1517)"
+		],
+		"status": "ok"
+	},
+	"africa-out-of-africa": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Recent_African_origin_of_modern_humans"
+		],
+		"status": "ok"
+	},
+	"africa-periplus": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Periplus_of_the_Erythraean_Sea"
+		],
+		"status": "ok"
+	},
+	"africa-pinnacle-point": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Pinnacle_Point"
+		],
+		"status": "ok"
+	},
+	"africa-ptolemy": {
+		"lastChecked": "2026-11-21",
+		"note": "Article: geocentric model accepted \"more than 1,200 years\"; 150 -> 1543 is ~1,400 years. Left unchanged.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Almagest"
+		],
+		"status": "disputed"
+	},
+	"africa-rinderpest": {
+		"lastChecked": "2026-11-21",
+		"note": "The \"around 90% of cattle\" figure is not in the article text.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/1890s_African_rinderpest_epizootic"
+		],
+		"status": "unverifiable"
+	},
+	"africa-rosetta-stone": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Rosetta_Stone"
+		],
+		"status": "ok"
+	},
+	"africa-rwanda-genocide": {
+		"lastChecked": "2026-11-21",
+		"note": "Article: constitution says >1 million; most scholarly estimates 500,000-662,000 Tutsi; other sources (UN etc.) up to ~800,000. Text range 500,000-800,000 left as is.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Rwandan_genocide"
+		],
+		"status": "disputed"
+	},
+	"africa-sahel-drought": {
+		"lastChecked": "2026-11-21",
+		"note": "Slug \"Sahel\" is a general region article; the 1968-1985 drought casualty claims are not covered. Consider a more specific slug.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Sahel"
+		],
+		"status": "unverifiable"
+	},
+	"africa-sea-peoples": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Sea_Peoples"
+		],
+		"status": "ok"
+	},
+	"africa-shaka": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Shaka"
+		],
+		"status": "ok"
+	},
+	"africa-sharpeville": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Sharpeville_massacre"
+		],
+		"status": "ok"
+	},
+	"africa-sierra-leone": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Freetown"
+		],
+		"status": "ok"
+	},
+	"africa-smallpox-eradicated": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Smallpox"
+		],
+		"status": "ok"
+	},
+	"africa-sokoto": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Sokoto_Caliphate"
+		],
+		"status": "ok"
+	},
+	"africa-songhai": {
+		"lastChecked": "2026-11-21",
+		"note": "\"At its peak, it was one of the largest African empires in history.\" (largest state -> one of the largest)",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Songhai_Empire"
+		],
+		"status": "fixed"
+	},
+	"africa-soweto": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Soweto_uprising"
+		],
+		"status": "ok"
+	},
+	"africa-stone-tools": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Lomekwi"
+		],
+		"status": "ok"
+	},
+	"africa-suez-canal": {
+		"lastChecked": "2026-11-21",
+		"note": "Article confirms ~10-year build and forced labour until 1864; gives 6,000 km saving Singapore-Rotterdam, not \"about 7,000 km Europe to India\".",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Suez_Canal"
+		],
+		"status": "unverifiable"
+	},
+	"africa-suez-crisis": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Suez_Crisis"
+		],
+		"status": "ok"
+	},
+	"africa-swahili-coast": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Swahili_coast"
+		],
+		"status": "ok"
+	},
+	"africa-tassili": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Tassili_n'Ajjer"
+		],
+		"status": "ok"
+	},
+	"africa-timbuktu": {
+		"lastChecked": "2026-11-21",
+		"note": "Article does not give \"hundreds of thousands of manuscripts\" or the Djinguereber commission by Mansa Musa; 2012-13 damage and ~90% saved are covered.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Timbuktu_Manuscripts"
+		],
+		"status": "unverifiable"
+	},
+	"africa-tondibi": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Battle_of_Tondibi"
+		],
+		"status": "ok"
+	},
+	"africa-trans-saharan-trade": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Trans-Saharan_trade"
+		],
+		"status": "ok"
+	},
+	"africa-vandals": {
+		"lastChecked": "2026-11-21",
+		"note": "Core year and claims consistent with the article.",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Vandal_Kingdom"
+		],
+		"status": "ok"
+	},
+	"africa-zanzibar": {
+		"lastChecked": "2026-11-21",
+		"note": "Article covers the Sultanate (1856-1964), not Said moving the capital in 1840 or \"tens of thousands of captives a year\".",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Sultanate_of_Zanzibar"
+		],
+		"status": "unverifiable"
+	}
+}
