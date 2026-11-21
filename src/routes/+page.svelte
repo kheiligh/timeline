@@ -6,6 +6,46 @@
 
 	let selectedEvent = $state<TimelineEvent | null>(null);
 
+	type Connection = { event: TimelineEvent; continentName: string; continentColor: string };
+
+	// Cross-references are treated as bidirectional: if A lists B, B also links back to A.
+	const connectionsById = (() => {
+		const lookup = new Map<string, Connection>();
+		for (const continent of continents) {
+			for (const event of continent.events) {
+				lookup.set(event.id, {
+					event,
+					continentName: continent.name,
+					continentColor: continent.color
+				});
+			}
+		}
+		const ids = new Map<string, Set<string>>();
+		const link = (a: string, b: string) => {
+			if (!ids.has(a)) ids.set(a, new Set());
+			ids.get(a)!.add(b);
+		};
+		for (const { event } of lookup.values()) {
+			for (const relatedId of event.related ?? []) {
+				if (!lookup.has(relatedId) || relatedId === event.id) continue;
+				link(event.id, relatedId);
+				link(relatedId, event.id);
+			}
+		}
+		const result = new Map<string, Connection[]>();
+		for (const [id, set] of ids) {
+			result.set(
+				id,
+				[...set].map((rid) => lookup.get(rid)!).sort((a, b) => a.event.year - b.event.year)
+			);
+		}
+		return result;
+	})();
+
+	const selectedConnections = $derived(
+		selectedEvent ? (connectionsById.get(selectedEvent.id) ?? []) : []
+	);
+
 	function handleSelectEvent(event: TimelineEvent) {
 		selectedEvent = event;
 	}
@@ -39,7 +79,12 @@
 		<div class="timeline-pane">
 			<TimelineViz {continents} onSelectEvent={handleSelectEvent} />
 		</div>
-		<DetailPanel event={selectedEvent} onClose={handleClosePanel} />
+		<DetailPanel
+			event={selectedEvent}
+			connections={selectedConnections}
+			onSelectEvent={handleSelectEvent}
+			onClose={handleClosePanel}
+		/>
 	</main>
 </div>
 
