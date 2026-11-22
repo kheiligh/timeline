@@ -14,9 +14,12 @@
 	interface Props {
 		continents: Continent[];
 		onSelectEvent: (event: TimelineEvent) => void;
+		selectedId?: string | null;
+		/** When set, dots not in this set are dimmed (e.g. while search results are open). */
+		highlightIds?: Set<string> | null;
 	}
 
-	let { continents, onSelectEvent }: Props = $props();
+	let { continents, onSelectEvent, selectedId = null, highlightIds = null }: Props = $props();
 
 	let containerWidth = $state(900);
 	let hoveredEvent = $state<(TimelineEvent & { x: number; y: number }) | null>(null);
@@ -102,6 +105,30 @@
 			placed.push(dot);
 		}
 		return placed;
+	}
+
+	const selectedDot = $derived.by(() => {
+		if (!selectedId) return null;
+		for (const band of bandData) {
+			const dot = band.events.find((e) => e.id === selectedId);
+			if (dot) return dot;
+		}
+		return null;
+	});
+
+	function isDimmed(id: string) {
+		return !!highlightIds && !highlightIds.has(id) && id !== selectedId;
+	}
+
+	/** Scrolls the timeline so the event's dot sits in the vertical center. Keeps zoom as-is. */
+	export function scrollToEvent(id: string) {
+		const el = scrollAreaEl;
+		if (!el) return;
+		const year = continents.flatMap((c) => c.events).find((e) => e.id === id)?.year;
+		if (year === undefined) return;
+		const y = yearToPixel(year, totalHeight);
+		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		el.scrollTo({ top: y - el.clientHeight / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
 	}
 
 	// Zoom via pinch (trackpad) and ctrl/cmd+scroll
@@ -264,6 +291,7 @@
 						stroke="#0d0d12"
 						stroke-width="1.5"
 						class="event-dot"
+						class:dimmed={isDimmed(event.id)}
 						role="button"
 						tabindex="0"
 						aria-label={event.title}
@@ -274,6 +302,22 @@
 					/>
 				{/each}
 			{/each}
+
+			<!-- Selected event ring -->
+			{#if selectedDot}
+				{#key selectedDot.id}
+					<circle
+						cx={selectedDot.x}
+						cy={selectedDot.y}
+						r={DOT_RADIUS + 4}
+						fill="none"
+						stroke="#e8e0d0"
+						stroke-width="2"
+						class="selected-ring"
+						pointer-events="none"
+					/>
+				{/key}
+			{/if}
 
 			<!-- Hover tooltip -->
 			{#if hoveredEvent}
@@ -358,7 +402,28 @@
 
 	.event-dot {
 		cursor: pointer;
-		transition: r 0.1s ease;
+		transition:
+			r 0.1s ease,
+			opacity 0.25s ease;
+	}
+
+	.event-dot.dimmed {
+		opacity: 0.15;
+	}
+
+	.selected-ring {
+		animation: ring-in 0.6s ease-out;
+	}
+
+	@keyframes ring-in {
+		from {
+			stroke-opacity: 0;
+			stroke-width: 6;
+		}
+		to {
+			stroke-opacity: 1;
+			stroke-width: 2;
+		}
 	}
 
 	.event-dot:focus {

@@ -4,6 +4,17 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="text-scale" content="scale" />
+		<link id="favicon" rel="icon" type="image/png" href="%sveltekit.assets%/favicons/01.png" />
+		<script>
+			// Random favicon on every visit/refresh. Icons are static/favicons/01.png … NN.png;
+			// update FAVICON_COUNT when adding or removing files.
+			(function () {
+				var FAVICON_COUNT = 35;
+				var n = Math.floor(Math.random() * FAVICON_COUNT) + 1;
+				document.getElementById('favicon').href =
+					'%sveltekit.assets%/favicons/' + (n < 10 ? '0' : '') + n + '.png';
+			})();
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

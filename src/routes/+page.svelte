@@ -1,10 +1,48 @@
 <script lang="ts">
 	import TimelineViz from '#lib/components/TimelineViz.svelte';
 	import DetailPanel from '#lib/components/DetailPanel.svelte';
+	import SidePanel from '#lib/components/SidePanel.svelte';
+	import SearchBar from '#lib/components/SearchBar.svelte';
+	import SearchResults, { type ResultsSort } from '#lib/components/SearchResults.svelte';
 	import { continents } from '#lib/data/continents';
 	import type { TimelineEvent } from '#lib/types';
+	import { buildSearchIndex, search, MIN_QUERY_LENGTH, type SearchHit } from '#lib/utils/search';
+
+	const SEARCH_DEBOUNCE_MS = 150;
 
 	let selectedEvent = $state<TimelineEvent | null>(null);
+	let timelineViz = $state<ReturnType<typeof TimelineViz> | null>(null);
+
+	// --- Search ---
+	const searchIndex = buildSearchIndex(continents);
+	let query = $state('');
+	let searchTerm = $state(''); // debounced copy of `query`
+	let resultsOpen = $state(false); // full results view is part of the panel stack
+	let resultsSort = $state<ResultsSort>('relevance');
+	let resultsScrollTop = $state(0);
+
+	$effect(() => {
+		const q = query;
+		const t = setTimeout(() => (searchTerm = q), SEARCH_DEBOUNCE_MS);
+		return () => clearTimeout(t);
+	});
+
+	const hits = $derived(
+		searchTerm.trim().length >= MIN_QUERY_LENGTH ? search(searchIndex, searchTerm) : []
+	);
+
+	// New results start at the top of the list.
+	$effect(() => {
+		searchTerm;
+		resultsSort;
+		resultsScrollTop = 0;
+	});
+
+	const highlightIds = $derived(
+		resultsOpen && hits.length > 0 ? new Set<string>(hits.map((h: SearchHit) => h.event.id)) : null
+	);
+
+	const panelOpen = $derived(!!selectedEvent || resultsOpen);
 
 	type Connection = { event: TimelineEvent; continentName: string; continentColor: string };
 
@@ -48,16 +86,27 @@
 
 	function handleSelectEvent(event: TimelineEvent) {
 		selectedEvent = event;
+		timelineViz?.scrollToEvent(event.id);
 	}
 
 	function handleClosePanel() {
 		selectedEvent = null;
+		resultsOpen = false;
+	}
+
+	function handleShowAllResults() {
+		searchTerm = query; // skip the debounce
+		selectedEvent = null;
+		resultsOpen = true;
+	}
+
+	function handleQueryInput() {
+		// Typing while browsing search results returns to the (live-updating) list.
+		if (resultsOpen) selectedEvent = null;
 	}
 
 	function handleKeydown(e: KeyboardEvent) {
-		if (e.key === 'Escape' && selectedEvent) {
-			selectedEvent = null;
-		}
+		if (e.key === 'Escape' && panelOpen) handleClosePanel();
 	}
 </script>
 
@@ -73,18 +122,49 @@
 			<h1 class="site-title">Human History</h1>
 			<span class="site-subtitle">3,000,000 BCE &ndash; Present</span>
 		</div>
+		<SearchBar
+			bind:query
+			{searchTerm}
+			{hits}
+			suppressDropdown={resultsOpen}
+			onSelect={handleSelectEvent}
+			onShowAll={handleShowAllResults}
+			onInput={handleQueryInput}
+		/>
 	</header>
 
-	<main class="main" class:panel-open={!!selectedEvent}>
+	<main class="main" class:panel-open={panelOpen}>
 		<div class="timeline-pane">
-			<TimelineViz {continents} onSelectEvent={handleSelectEvent} />
+			<TimelineViz
+				bind:this={timelineViz}
+				{continents}
+				onSelectEvent={handleSelectEvent}
+				selectedId={selectedEvent?.id ?? null}
+				{highlightIds}
+			/>
 		</div>
-		<DetailPanel
-			event={selectedEvent}
-			connections={selectedConnections}
-			onSelectEvent={handleSelectEvent}
+		<SidePanel
+			open={panelOpen}
 			onClose={handleClosePanel}
-		/>
+			onBack={resultsOpen && selectedEvent ? () => (selectedEvent = null) : undefined}
+		>
+			{#if selectedEvent}
+				<DetailPanel
+					event={selectedEvent}
+					connections={selectedConnections}
+					onSelectEvent={handleSelectEvent}
+				/>
+			{:else if resultsOpen}
+				<SearchResults
+					{searchTerm}
+					{hits}
+					pending={query !== searchTerm}
+					bind:sort={resultsSort}
+					bind:scrollTop={resultsScrollTop}
+					onSelectEvent={handleSelectEvent}
+				/>
+			{/if}
+		</SidePanel>
 	</main>
 </div>
 
@@ -121,6 +201,9 @@
 		flex-shrink: 0;
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
+		padding-right: 16px;
+		gap: 16px;
 	}
 
 	.header-inner {

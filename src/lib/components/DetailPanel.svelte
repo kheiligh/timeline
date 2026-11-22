@@ -9,129 +9,83 @@
 	}
 
 	interface Props {
-		event: TimelineEvent | null;
+		event: TimelineEvent;
 		connections?: Connection[];
 		onSelectEvent?: (event: TimelineEvent) => void;
-		onClose: () => void;
 	}
 
-	let { event, connections = [], onSelectEvent, onClose }: Props = $props();
+	let { event, connections = [], onSelectEvent }: Props = $props();
 </script>
 
-<div class="panel" class:open={!!event}>
-	{#if event}
-		<div class="panel-inner">
-			<button class="close-btn" onclick={onClose} aria-label="Close">&#x2715;</button>
+<div class="panel-inner">
+	<div class="year-badge">
+		{formatYear(event.year)}
+		{#if event.endYear}
+			<span class="year-sep">–</span>
+			{formatYear(event.endYear)}
+		{/if}
+	</div>
 
-			<div class="year-badge">
-				{formatYear(event.year)}
-				{#if event.endYear}
-					<span class="year-sep">–</span>
-					{formatYear(event.endYear)}
-				{/if}
-			</div>
+	<h2 class="event-title">{event.title}</h2>
 
-			<h2 class="event-title">{event.title}</h2>
-
-			{#if event.tags && event.tags.length > 0}
-				<div class="tags">
-					{#each event.tags as tag}
-						<span class="tag">{tag}</span>
-					{/each}
-				</div>
-			{/if}
-
-			<div class="section">
-				<h3 class="section-label">What happened</h3>
-				<p class="body-text">{event.description}</p>
-			</div>
-
-			<div class="section significance">
-				<h3 class="section-label">So what?</h3>
-				<p class="body-text">{event.significance}</p>
-			</div>
-
-			{#if connections.length > 0}
-				<div class="section connections">
-					<h3 class="section-label">Connections</h3>
-					<ul class="connection-list">
-						{#each connections as connection (connection.event.id)}
-							<li>
-								<button
-									class="connection"
-									onclick={() => onSelectEvent?.(connection.event)}
-								>
-									<span class="connection-meta">
-										<span class="connection-dot" style="background: {connection.continentColor};"></span>
-										{connection.continentName} · {formatYear(connection.event.year)}
-									</span>
-									<span class="connection-title">{connection.event.title}</span>
-								</button>
-							</li>
-						{/each}
-					</ul>
-				</div>
-			{/if}
-
-			{#if event.wikipediaSlug}
-				<a
-					class="wiki-link"
-					href="https://en.wikipedia.org/wiki/{event.wikipediaSlug}"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Read on Wikipedia
-					<span class="arrow">&#x2197;</span>
-				</a>
-			{/if}
+	{#if event.tags && event.tags.length > 0}
+		<div class="tags">
+			{#each event.tags as tag}
+				<span class="tag">{tag}</span>
+			{/each}
 		</div>
+	{/if}
+
+	<div class="section">
+		<h3 class="section-label">What happened</h3>
+		<p class="body-text">{event.description}</p>
+	</div>
+
+	<div class="section significance">
+		<h3 class="section-label">So what?</h3>
+		<p class="body-text">{event.significance}</p>
+	</div>
+
+	{#if connections.length > 0}
+		<div class="section connections">
+			<h3 class="section-label">Connections</h3>
+			<ul class="connection-list">
+				{#each connections as connection (connection.event.id)}
+					<li>
+						<button
+							class="connection"
+							onclick={() => onSelectEvent?.(connection.event)}
+						>
+							<span class="connection-meta">
+								<span class="connection-dot" style="background: {connection.continentColor};"></span>
+								{connection.continentName} · {formatYear(connection.event.year)}
+							</span>
+							<span class="connection-title">{connection.event.title}</span>
+						</button>
+					</li>
+				{/each}
+			</ul>
+		</div>
+	{/if}
+
+	{#if event.wikipediaSlug}
+		<a
+			class="wiki-link"
+			href="https://en.wikipedia.org/wiki/{event.wikipediaSlug}"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			Read on Wikipedia
+			<span class="arrow">&#x2197;</span>
+		</a>
 	{/if}
 </div>
 
 <style>
-	.panel {
-		width: 0;
-		overflow: hidden;
-		background: #12121c;
-		border-left: 1px solid #2a2a3a;
-		transition:
-			width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-			opacity 0.35s ease;
-		opacity: 0;
-		flex-shrink: 0;
-	}
-
-	.panel.open {
-		width: 66.667%;
-		opacity: 1;
-	}
-
 	.panel-inner {
-		padding: 40px 36px;
-		height: 100%;
+		flex: 1;
+		padding: 16px 36px 40px;
 		overflow-y: auto;
-		box-sizing: border-box;
-	}
-
-	.close-btn {
-		float: right;
-		background: none;
-		border: 1px solid #3a3a5a;
-		color: #6a6a8a;
-		font-size: 14px;
-		width: 28px;
-		height: 28px;
-		border-radius: 4px;
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		transition: color 0.15s, border-color 0.15s;
-	}
-
-	.close-btn:hover {
-		color: #e8e0d0;
-		border-color: #6a6a8a;
 	}
 
 	.year-badge {
