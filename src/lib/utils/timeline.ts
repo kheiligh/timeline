@@ -3,6 +3,8 @@ import type { ActivityKeyframe } from '#lib/types';
 
 export const BASE_HEIGHT = 4000;
 export const LEFT_PADDING = 80;
+/** Year-axis width in the phone layout, where labels use `formatYearShort`. */
+export const LEFT_PADDING_COMPACT = 44;
 export const TOP_PADDING = 60;
 export const BOTTOM_PADDING = 40;
 
@@ -92,10 +94,25 @@ const YEAR_LABEL_YEARS = [
 	-500, 0, 500, 1000, 1500, 1700, 1800, 1900, 1950, 2000, 2026
 ];
 
-export function getYearLabels(totalHeight: number = BASE_HEIGHT) {
+/** Narrow axis labels for the phone layout: "3M", "50k", "3k BCE", "500 BCE", "1 CE", "1500". */
+export function formatYearShort(year: number): string {
+	if (year < 0) {
+		const abs = Math.abs(year);
+		if (abs >= 1_000_000) {
+			const m = abs / 1_000_000;
+			return `${m % 1 === 0 ? m : m.toFixed(1)}M`;
+		}
+		if (abs >= 10_000) return `${Math.round(abs / 1000)}k`;
+		if (abs >= 1000) return `${abs / 1000}k BCE`;
+		return `${abs} BCE`;
+	}
+	return formatYear(year);
+}
+
+export function getYearLabels(totalHeight: number = BASE_HEIGHT, short = false) {
 	return YEAR_LABEL_YEARS.map((year) => ({
 		year,
 		y: yearToPixel(year, totalHeight),
-		label: formatYear(year)
+		label: short ? formatYearShort(year) : formatYear(year)
 	}));
 }

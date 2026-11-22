@@ -433,4 +433,47 @@
 		line-height: 1.5;
 		color: #8a8aa0;
 	}
+
+	/* Phone layout: the icon expands into a full-width field over the site title. */
+	@media (max-width: 767px) {
+		.search.expanded {
+			position: absolute;
+			left: 8px;
+			right: 8px;
+			top: 50%;
+			transform: translateY(-50%);
+			z-index: 20;
+		}
+
+		.field {
+			height: 36px;
+		}
+
+		.icon-btn {
+			width: 40px;
+			height: 36px;
+		}
+
+		.search.expanded input {
+			flex: 1;
+			width: auto;
+			font-size: 16px; /* below 16px iOS Safari zooms the page on focus */
+		}
+
+		.clear-btn {
+			width: 36px;
+			height: 36px;
+		}
+
+		.dropdown {
+			left: 0;
+			right: 0;
+			width: auto;
+			max-height: calc(100dvh - 72px);
+		}
+
+		.hit {
+			padding: 10px;
+		}
+	}
 </style>

@@ -6,6 +6,7 @@
 	import SearchResults, { type ResultsSort } from '#lib/components/SearchResults.svelte';
 	import { continents } from '#lib/data/continents';
 	import type { TimelineEvent } from '#lib/types';
+	import { narrowScreen } from '#lib/utils/media.svelte';
 	import { buildSearchIndex, search, MIN_QUERY_LENGTH, type SearchHit } from '#lib/utils/search';
 
 	const SEARCH_DEBOUNCE_MS = 150;
@@ -141,6 +142,7 @@
 				onSelectEvent={handleSelectEvent}
 				selectedId={selectedEvent?.id ?? null}
 				{highlightIds}
+				compact={narrowScreen.current}
 			/>
 		</div>
 		<SidePanel
@@ -192,6 +194,7 @@
 		display: flex;
 		flex-direction: column;
 		height: 100vh;
+		height: 100dvh;
 	}
 
 	.header {
@@ -204,6 +207,7 @@
 		justify-content: space-between;
 		padding-right: 16px;
 		gap: 16px;
+		position: relative;
 	}
 
 	.header-inner {
@@ -243,5 +247,20 @@
 
 	.main.panel-open .timeline-pane {
 		width: 33.333%;
+	}
+
+	@media (max-width: 767px) {
+		.header {
+			height: 48px;
+			padding-right: 8px;
+		}
+
+		.header-inner {
+			padding: 0 16px;
+		}
+
+		.site-subtitle {
+			display: none;
+		}
 	}
 </style>

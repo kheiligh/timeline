@@ -18,6 +18,8 @@ export interface ActivityKeyframe {
 export interface Continent {
 	id: string;
 	name: string;
+	/** Lane label in the phone layout. */
+	shortName: string;
 	color: string;
 	activityKeyframes: ActivityKeyframe[];
 	events: TimelineEvent[];

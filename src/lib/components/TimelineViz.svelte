@@ -8,6 +8,7 @@
 		getYearLabels,
 		BASE_HEIGHT,
 		LEFT_PADDING,
+		LEFT_PADDING_COMPACT,
 		TOP_PADDING
 	} from '#lib/utils/timeline';
 
@@ -17,9 +18,17 @@
 		selectedId?: string | null;
 		/** When set, dots not in this set are dimmed (e.g. while search results are open). */
 		highlightIds?: Set<string> | null;
+		/** Phone layout: narrow year axis and short continent labels. */
+		compact?: boolean;
 	}
 
-	let { continents, onSelectEvent, selectedId = null, highlightIds = null }: Props = $props();
+	let {
+		continents,
+		onSelectEvent,
+		selectedId = null,
+		highlightIds = null,
+		compact = false
+	}: Props = $props();
 
 	let containerWidth = $state(900);
 	let hoveredEvent = $state<(TimelineEvent & { x: number; y: number }) | null>(null);
@@ -31,14 +40,15 @@
 	const MAX_ZOOM = 10;
 
 	const totalHeight = $derived(BASE_HEIGHT * zoomLevel);
-	const laneWidth = $derived((containerWidth - LEFT_PADDING - RIGHT_PADDING) / continents.length);
+	const leftPadding = $derived(compact ? LEFT_PADDING_COMPACT : LEFT_PADDING);
+	const laneWidth = $derived((containerWidth - leftPadding - RIGHT_PADDING) / continents.length);
 	// Bands at full activity nearly touch: 98% of the old 18% inter-band gap is removed.
 	const BAND_FILL = 1 - 0.18 * 0.02;
 	const maxHalfWidth = $derived((laneWidth / 2) * BAND_FILL);
 
 	const DOT_RADIUS = 5;
 	const DOT_SPACING = DOT_RADIUS * 2 + 2; // minimum center-to-center distance between dots
-	const yearLabels = $derived(getYearLabels(totalHeight));
+	const yearLabels = $derived(getYearLabels(totalHeight, compact));
 
 	type BandEvent = TimelineEvent & { x: number; y: number };
 	type BandData = {
@@ -50,7 +60,7 @@
 
 	const bandData = $derived<BandData[]>(
 		continents.map((continent, i) => {
-			const centerX = LEFT_PADDING + laneWidth * (i + 0.5);
+			const centerX = leftPadding + laneWidth * (i + 0.5);
 			return {
 				continent,
 				path: computeBandPath(continent.activityKeyframes, centerX, maxHalfWidth, totalHeight),
@@ -216,13 +226,13 @@
 
 <div class="viz-wrapper" bind:clientWidth={containerWidth}>
 	<!-- Sticky continent labels -->
-	<div class="continent-labels" style="padding-left: {LEFT_PADDING}px;">
+	<div class="continent-labels" class:compact style="padding-left: {leftPadding}px;">
 		{#each bandData as band}
 			<div class="continent-label" style="width: {laneWidth}px; color: {band.continent.color};">
-				{band.continent.name}
+				{compact ? band.continent.shortName : band.continent.name}
 			</div>
 		{/each}
-		{#if zoomLevel > 1.05}
+		{#if zoomLevel > 1.05 && !compact}
 			<div class="zoom-indicator">{Math.round(zoomLevel * 100)}%</div>
 		{/if}
 	</div>
@@ -236,7 +246,7 @@
 			<!-- Gridlines and year labels -->
 			{#each yearLabels as label}
 				<line
-					x1={LEFT_PADDING}
+					x1={leftPadding}
 					y1={label.y}
 					x2={containerWidth - RIGHT_PADDING}
 					y2={label.y}
@@ -244,11 +254,12 @@
 					stroke-width="1"
 				/>
 				<text
-					x={LEFT_PADDING - 6}
+					x={leftPadding - (compact ? 4 : 6)}
 					y={label.y}
 					text-anchor="end"
 					dominant-baseline="middle"
 					class="year-label"
+					class:compact
 				>
 					{label.label}
 				</text>
@@ -373,6 +384,13 @@
 		opacity: 0.9;
 	}
 
+	.continent-labels.compact .continent-label {
+		font-size: 9px;
+		letter-spacing: 0.02em;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
 	.zoom-indicator {
 		position: absolute;
 		right: 12px;
@@ -398,6 +416,11 @@
 		fill: #7a7a9a;
 		font-family: 'JetBrains Mono', 'Courier New', monospace;
 		letter-spacing: -0.02em;
+	}
+
+	.year-label.compact {
+		font-size: 8.5px;
+		letter-spacing: -0.04em;
 	}
 
 	.event-dot {
