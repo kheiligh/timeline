@@ -273,7 +273,7 @@ export const africaEvents: TimelineEvent[] = [
 	},
 	{
 		id: 'africa-deir-el-medina-strike',
-		title: 'First Recorded Labor Strike',
+		title: 'An Early Labor Strike',
 		year: -1157,
 		description:
 			'Under Ramesses III, tomb-builders at Deir el-Medina went unpaid and downed tools, staging sit-ins at temples until grain rations arrived. A papyrus records the events.',
@@ -321,7 +321,7 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Carthage Founded',
 		year: -814,
 		description:
-			'Phoenician settlers from Tyre traditionally founded Carthage on the coast of modern Tunisia. It grew into a commercial empire controlling trade across the western Mediterranean.',
+			'According to tradition, Phoenician settlers from Tyre founded Carthage on the coast of modern Tunisia. It grew into a commercial empire controlling trade across the western Mediterranean.',
 		significance:
 			'Carthage was the dominant sea power of the western Mediterranean for centuries — and the rival whose destruction made Rome a world empire.',
 		wikipediaSlug: 'Carthage',
@@ -519,9 +519,9 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Austronesians Settle Madagascar',
 		year: 500,
 		description:
-			'Seafarers from Borneo crossed the Indian Ocean and settled Madagascar, later mixing with Bantu-speaking Africans. Malagasy is still an Austronesian language, closest to languages of southern Borneo.',
+			'Within the last two thousand years, seafarers from southern Borneo crossed the Indian Ocean and settled Madagascar, later mixing with Bantu-speaking Africans. Malagasy is still an Austronesian language, closest to languages of southern Borneo.',
 		significance:
-			"Madagascar is the western tip of the greatest maritime expansion in prehistory — the same seafaring culture that reached Easter Island, 20,000 km away.",
+			"Madagascar is the western tip of the greatest maritime expansion in prehistory — the same seafaring culture that reached Easter Island, on the far side of the Pacific.",
 		wikipediaSlug: 'History_of_Madagascar',
 		tags: ['migration', 'navigation'],
 		related: ['asia-austronesian-expansion', 'oceania-lapita']
@@ -589,9 +589,9 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Igbo-Ukwu Bronzes',
 		year: 900,
 		description:
-			'At Igbo-Ukwu in southeastern Nigeria, artisans cast astonishingly intricate bronzes using the lost-wax technique. The site also contained thousands of glass beads, some traced to Egypt and beyond.',
+			'At Igbo-Ukwu in southeastern Nigeria, artisans cast astonishingly intricate bronzes using the lost-wax technique. Its materials point to a trading network that reached as far as Egypt.',
 		significance:
-			"Igbo-Ukwu's metalwork rivaled anything being made in contemporary Europe, and its beads prove West African forest societies were connected to long-distance trade.",
+			"Igbo-Ukwu's metalwork rivaled anything being made in contemporary Europe, and its trade goods prove West African forest societies were connected to long-distance trade.",
 		wikipediaSlug: 'Igbo-Ukwu',
 		tags: ['art', 'technology', 'trade']
 	},
@@ -726,7 +726,7 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Timbuktu: City of Scholars',
 		year: 1327,
 		description:
-			"Mansa Musa commissioned the Djinguereber Mosque in Timbuktu. Over the next two centuries the city became a center of Islamic scholarship, with hundreds of thousands of manuscripts on law, astronomy, and medicine.",
+			"Mansa Musa is credited with commissioning the Djinguereber Mosque in Timbuktu. Over the next two centuries the city became a center of Islamic scholarship, with hundreds of thousands of manuscripts on law, astronomy, and medicine.",
 		significance:
 			"Timbuktu's manuscripts disprove the notion of Africa as a continent without written history. Locals smuggled many to safety when militants occupied the city in 2012.",
 		wikipediaSlug: 'Timbuktu_Manuscripts',
@@ -992,7 +992,7 @@ export const africaEvents: TimelineEvent[] = [
 		description:
 			'An Albanian officer in Ottoman service, Muhammad Ali seized control of Egypt and launched a crash modernization program: factories, a conscript army, cotton exports, and students sent to Europe.',
 		significance:
-			'Egypt became the first non-Western state to attempt state-led industrialization — a model later followed from Meiji Japan to post-colonial Africa.',
+			'Egypt became one of the first non-Western states to attempt state-led industrialization — a model later followed from Meiji Japan to post-colonial Africa.',
 		wikipediaSlug: 'Muhammad_Ali_of_Egypt',
 		tags: ['politics', 'technology', 'economics']
 	},
@@ -1035,10 +1035,10 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Zanzibar and the East African Slave Trade',
 		year: 1840,
 		description:
-			"Sultan Said moved his capital from Oman to Zanzibar, which boomed on clove plantations and the slave trade. Caravans from the interior brought ivory and tens of thousands of captives a year.",
+			"In 1840 Sultan Said moved his capital from Muscat to Zanzibar, which boomed on clove plantations and the slave trade. Caravans from the interior brought ivory and thousands of captives a year.",
 		significance:
 			"The East African slave trade, older than the Atlantic one, peaked in the 19th century. Its abolition became a pretext for European colonial conquest of East Africa.",
-		wikipediaSlug: 'Sultanate_of_Zanzibar',
+		wikipediaSlug: 'Slavery_in_Zanzibar',
 		tags: ['slavery', 'trade', 'economics']
 	},
 	{
@@ -1058,7 +1058,7 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Suez Canal Opens',
 		year: 1869,
 		description:
-			"After ten years of construction, much of it by forced Egyptian labor, the Suez Canal opened, linking the Mediterranean and Red Sea and cutting the voyage from Europe to India by about 7,000 km.",
+			"After ten years of construction, much of it by forced Egyptian labor, the Suez Canal opened, linking the Mediterranean and Red Sea and cutting the voyage from the Arabian Sea to London by about 8,900 km.",
 		significance:
 			"Suez remade world trade and Egypt's fate: the debts it created led directly to British occupation in 1882, and the canal remains a choke point of the global economy.",
 		wikipediaSlug: 'Suez_Canal',
@@ -1116,7 +1116,7 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'The Rinderpest Catastrophe',
 		year: 1889,
 		description:
-			"A cattle plague introduced to the Horn of Africa spread south over a decade, killing around 90% of the cattle in sub-Saharan Africa along with wild buffalo and antelope.",
+			"A cattle plague introduced to the Horn of Africa spread south over a decade, killing up to 90% or more of the cattle in many regions, along with wild buffalo and antelope.",
 		significance:
 			"For pastoral peoples, rinderpest meant famine and social collapse — arriving just as Europeans invaded, it made colonial conquest far easier.",
 		wikipediaSlug: '1890s_African_rinderpest_epizootic',
@@ -1252,9 +1252,9 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'Mau Mau Uprising',
 		year: 1952,
 		description:
-			"Kikuyu fighters in Kenya rose against British colonial land seizures. Britain declared an emergency, detained over 100,000 people in camps, and used torture on a vast scale.",
+			"Kikuyu fighters in Kenya rose against British colonial land seizures. Britain declared an emergency, forced about a million Kikuyu into fortified villages, and used torture on a vast scale.",
 		significance:
-			"Mau Mau hastened Kenyan independence; in 2013 Britain paid compensation to survivors after a court case revealed long-hidden colonial files.",
+			"Mau Mau hastened Kenyan independence; in 2013 Britain paid compensation to more than 5,000 survivors after a court case revealed long-hidden colonial files.",
 		wikipediaSlug: 'Mau_Mau_rebellion',
 		tags: ['colonialism', 'war', 'independence']
 	},
@@ -1366,10 +1366,10 @@ export const africaEvents: TimelineEvent[] = [
 		title: 'The Great Sahel Drought',
 		year: 1972,
 		description:
-			"Years of failed rains from the late 1960s to the mid-1980s brought famine to the Sahel, killing hundreds of thousands of people and millions of livestock.",
+			"Years of failed rains from the late 1960s to the mid-1980s brought famine to the Sahel, killing an estimated 100,000 people and millions of livestock.",
 		significance:
 			"The Sahel drought pushed desertification and climate onto the international agenda and is one of the most dramatic regional climate shifts of the 20th century.",
-		wikipediaSlug: 'Sahel',
+		wikipediaSlug: 'Droughts_in_the_Sahel',
 		tags: ['environment', 'collapse']
 	},
 	{

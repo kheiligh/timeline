@@ -235,7 +235,7 @@
 	},
 	"africa-carthage": {
 		"lastChecked": "2026-11-21",
-		"note": "Article: founder Dido/Elissa is legendary, historicity questioned; 814 BCE is the traditional date (not given in article). Added \"traditionally\".",
+		"note": "Article: founder Dido/Elissa is legendary, historicity questioned; 814 BCE is the traditional date (not given in article). Added \"traditionally\". Follow-up: reworded to \"According to tradition, ... founded\".",
 		"sources": [
 			"https://en.wikipedia.org/wiki/Carthage"
 		],
@@ -291,7 +291,7 @@
 	},
 	"africa-deir-el-medina-strike": {
 		"lastChecked": "2026-11-21",
-		"note": "Article: \"may have been the first sit-down strike action in recorded history\". Significance hedged; title still says \"First Recorded\" (suggest hedging).",
+		"note": "Article: \"may have been the first sit-down strike action in recorded history\". Significance hedged; title still says \"First Recorded\" (suggest hedging). Follow-up: title hedged to \"An Early Labor Strike\".",
 		"sources": [
 			"https://en.wikipedia.org/wiki/Deir_el-Medina"
 		],
@@ -539,11 +539,11 @@
 	},
 	"africa-igbo-ukwu": {
 		"lastChecked": "2026-11-21",
-		"note": "Article confirms lost-wax casting and ~850 AD dating but not the \"thousands of glass beads\" claim.",
+		"status": "fixed",
 		"sources": [
 			"https://en.wikipedia.org/wiki/Igbo-Ukwu"
 		],
-		"status": "unverifiable"
+		"note": "Manual follow-up to PR #3. Removed the unsupported \"thousands of glass beads\" claim. Article: \"materials that are evidence of a long-distance trading system extending to Egypt.\""
 	},
 	"africa-independence": {
 		"lastChecked": "2026-11-21",
@@ -667,11 +667,12 @@
 	},
 	"africa-madagascar": {
 		"lastChecked": "2026-11-21",
-		"note": "Article confirms Austronesian (South Borneo) settlement and Bantu mixing; the \"20,000 km to Easter Island\" claim and the year 500 are not covered.",
+		"status": "fixed",
 		"sources": [
-			"https://en.wikipedia.org/wiki/History_of_Madagascar"
+			"https://en.wikipedia.org/wiki/History_of_Madagascar",
+			"https://en.wikipedia.org/wiki/Austronesian_peoples"
 		],
-		"status": "unverifiable"
+		"note": "Manual follow-up to PR #3. Removed \"20,000 km\" and hedged the date. Articles: settlers \"from South Borneo\"; \"Over two thousand years, the island has received waves of settlers\"; Austronesians \"reached as far as Easter Island to the east, Madagascar to the west.\" The year 500 is approximate."
 	},
 	"africa-maji-maji": {
 		"lastChecked": "2026-11-21",
@@ -715,11 +716,11 @@
 	},
 	"africa-mau-mau": {
 		"lastChecked": "2026-11-21",
-		"note": "Article does not state \">100,000 detained\" in extracted text; 2013 compensation not checked.",
+		"status": "fixed",
 		"sources": [
 			"https://en.wikipedia.org/wiki/Mau_Mau_rebellion"
 		],
-		"status": "unverifiable"
+		"note": "Manual follow-up to PR #3. Replaced the unsupported \">100,000 detained\" with the \"compulsory resettlement of 1,007,500 Kikuyu\" into fortified villages. Added \"more than 5,000\" from: \"a June 2013 decision by Britain to compensate more than 5,000 Kenyans it had tortured and abused.\""
 	},
 	"africa-meroe": {
 		"lastChecked": "2026-11-21",
@@ -739,11 +740,11 @@
 	},
 	"africa-muhammad-ali": {
 		"lastChecked": "2026-11-21",
-		"note": "\"First non-Western state to attempt state-led industrialization\" is not in the article (framing claim).",
+		"status": "disputed",
 		"sources": [
 			"https://en.wikipedia.org/wiki/Muhammad_Ali_of_Egypt"
 		],
-		"status": "unverifiable"
+		"note": "Manual follow-up to PR #3. Article supports factories and that his policies \"had a positive impact on industrialization\", but not a \"first\". Hedged to \"one of the first\"."
 	},
 	"africa-mutapa": {
 		"lastChecked": "2026-11-21",
@@ -875,11 +876,11 @@
 	},
 	"africa-rinderpest": {
 		"lastChecked": "2026-11-21",
-		"note": "The \"around 90% of cattle\" figure is not in the article text.",
+		"status": "fixed",
 		"sources": [
 			"https://en.wikipedia.org/wiki/1890s_African_rinderpest_epizootic"
 		],
-		"status": "unverifiable"
+		"note": "Manual follow-up to PR #3. Article: \"an estimated 90% mortality\" in Ethiopia; \"80-90% of all the cattle of the Fulani died\"; \"98% of all the cattle\" in French West Africa and German Cameroon. Reworded to \"up to 90% or more of the cattle in many regions\"."
 	},
 	"africa-rosetta-stone": {
 		"lastChecked": "2026-11-21",
@@ -899,11 +900,11 @@
 	},
 	"africa-sahel-drought": {
 		"lastChecked": "2026-11-21",
-		"note": "Slug \"Sahel\" is a general region article; the 1968-1985 drought casualty claims are not covered. Consider a more specific slug.",
+		"status": "fixed",
 		"sources": [
-			"https://en.wikipedia.org/wiki/Sahel"
+			"https://en.wikipedia.org/wiki/Droughts_in_the_Sahel"
 		],
-		"status": "unverifiable"
+		"note": "Manual follow-up to PR #3. Slug changed from the general Sahel article. Article: \"From the late 1960s to early 1980s famine killed 100,000 people.\" Other estimates run higher."
 	},
 	"africa-sea-peoples": {
 		"lastChecked": "2026-11-21",
@@ -979,11 +980,11 @@
 	},
 	"africa-suez-canal": {
 		"lastChecked": "2026-11-21",
-		"note": "Article confirms ~10-year build and forced labour until 1864; gives 6,000 km saving Singapore-Rotterdam, not \"about 7,000 km Europe to India\".",
+		"status": "fixed",
 		"sources": [
 			"https://en.wikipedia.org/wiki/Suez_Canal"
 		],
-		"status": "unverifiable"
+		"note": "Manual follow-up to PR #3. Article: \"shrinks the journey from the Arabian Sea to London by about 8,900 km\". The old 7,000 km Europe-India figure was not supported."
 	},
 	"africa-suez-crisis": {
 		"lastChecked": "2026-11-21",
@@ -1011,11 +1012,12 @@
 	},
 	"africa-timbuktu": {
 		"lastChecked": "2026-11-21",
-		"note": "Article does not give \"hundreds of thousands of manuscripts\" or the Djinguereber commission by Mansa Musa; 2012-13 damage and ~90% saved are covered.",
+		"status": "ok",
 		"sources": [
-			"https://en.wikipedia.org/wiki/Timbuktu_Manuscripts"
+			"https://en.wikipedia.org/wiki/Timbuktu_Manuscripts",
+			"https://en.wikipedia.org/wiki/Djinguereber_Mosque"
 		],
-		"status": "unverifiable"
+		"note": "Manual follow-up to PR #3. \"Some 350,000 manuscripts were transported to safety\"; Djinguereber \"attributed to Mansa Musa\", built 1327. Wording changed to \"is credited with commissioning\"."
 	},
 	"africa-tondibi": {
 		"lastChecked": "2026-11-21",
@@ -1043,10 +1045,11 @@
 	},
 	"africa-zanzibar": {
 		"lastChecked": "2026-11-21",
-		"note": "Article covers the Sultanate (1856-1964), not Said moving the capital in 1840 or \"tens of thousands of captives a year\".",
+		"status": "fixed",
 		"sources": [
-			"https://en.wikipedia.org/wiki/Sultanate_of_Zanzibar"
+			"https://en.wikipedia.org/wiki/Said_bin_Sultan",
+			"https://en.wikipedia.org/wiki/Slavery_in_Zanzibar"
 		],
-		"status": "unverifiable"
+		"note": "Manual follow-up to PR #3. Slug changed from the Sultanate (1856-1964) article. \"In 1840, Said moved his capital from Muscat to Stone Town in Zanzibar.\" Slavery in Zanzibar: \"upwards of 7,000 Slaves would have to be imported annually\" (higher in some years), so \"tens of thousands\" softened to \"thousands\"."
 	}
 }
