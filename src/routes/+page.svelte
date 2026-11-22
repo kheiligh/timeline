@@ -8,7 +8,7 @@
 	import SearchResults, { type ResultsSort } from '#lib/components/SearchResults.svelte';
 	import { continents } from '#lib/data/continents';
 	import type { TimelineEvent } from '#lib/types';
-	import { narrowScreen } from '#lib/utils/media.svelte';
+	import { coarsePointer, narrowScreen } from '#lib/utils/media.svelte';
 	import { buildSearchIndex, search, MIN_QUERY_LENGTH, type SearchHit } from '#lib/utils/search';
 
 	const SEARCH_DEBOUNCE_MS = 150;
@@ -202,6 +202,8 @@
 				selectedId={selectedEvent?.id ?? null}
 				{highlightIds}
 				compact={narrowScreen.current}
+				touch={coarsePointer.current}
+				onTapEmpty={() => narrow && sheetSnap === 'peek' && handleClosePanel()}
 			/>
 		</div>
 		{#snippet panelContent()}
