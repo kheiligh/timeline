@@ -94,6 +94,8 @@
 	style="height: {height}px;"
 	aria-label="Event details"
 >
+	<!-- Drag-to-resize is a pointer affordance; every action it offers also has a button. -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
 		class="grab"
 		onpointerdown={handlePointerDown}

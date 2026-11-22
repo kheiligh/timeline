@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/state';
 	import TimelineViz from '#lib/components/TimelineViz.svelte';
 	import DetailPanel from '#lib/components/DetailPanel.svelte';
 	import SidePanel from '#lib/components/SidePanel.svelte';
@@ -65,7 +68,7 @@
 			{ continent: (typeof continents)[number]; prev: TimelineEvent | null; next: TimelineEvent | null }
 		>();
 		for (const continent of continents) {
-			continent.events.forEach((event, i, events) => {
+			continent.events.forEach((event: TimelineEvent, i: number, events: TimelineEvent[]) => {
 				info.set(event.id, {
 					continent,
 					prev: events[i - 1] ?? null,
@@ -76,6 +79,61 @@
 		return info;
 	})();
 	const selectedLane = $derived(selectedEvent ? laneInfo.get(selectedEvent.id) : undefined);
+
+	// --- Phone back button ---
+	// While the sheet is open there is one extra history entry (page.state.sheet). Back pops it:
+	// we step the sheet down one level (full → half, otherwise closed) and re-arm if still open.
+	// Closing the sheet from the UI pops the entry ourselves so it doesn't linger.
+	const sheetOpen = $derived(narrow && panelOpen);
+	let historyArmed = false; // last observed page.state.sheet
+	let pushing = false; // a shallow navigation is on its way
+	let pendingBacks = 0; // history.back() calls we made that haven't landed yet
+
+	$effect(() => {
+		const armed = !!page.state.sheet;
+		const open = sheetOpen;
+		untrack(() => {
+			if (historyArmed && !armed) {
+				if (pendingBacks > 0) pendingBacks--;
+				else if (sheetSnap === 'full') sheetSnap = 'half';
+				else handleClosePanel();
+			}
+			historyArmed = armed;
+			if (armed) pushing = false;
+			if (sheetOpen && !armed) {
+				if (!pushing) {
+					pushing = true;
+					goto(page.url.href, { state: { sheet: true }, shallow: true });
+				}
+			} else if (!open && armed && pendingBacks === 0) {
+				pendingBacks++;
+				history.back();
+			}
+		});
+	});
+
+	// --- One-time gesture hint for touch users ---
+	const HINT_KEY = 'timeline-touch-hint-dismissed';
+	let hintVisible = $state(false);
+
+	$effect(() => {
+		if (!coarsePointer.current) return;
+		try {
+			hintVisible = localStorage.getItem(HINT_KEY) !== '1';
+		} catch {
+			hintVisible = true;
+		}
+	});
+
+	function dismissHint() {
+		if (!hintVisible) return;
+		hintVisible = false;
+		try {
+			localStorage.setItem(HINT_KEY, '1');
+		} catch {
+			// Private mode or blocked storage: the hint just shows again next visit.
+		}
+	}
 
 	// Once the sheet has resized, make sure the selected dot isn't hidden behind it.
 	$effect(() => {
@@ -194,7 +252,7 @@
 	</header>
 
 	<main class="main" class:panel-open={panelOpen} class:narrow bind:clientHeight={mainHeight}>
-		<div class="timeline-pane">
+		<div class="timeline-pane" onpointerdowncapture={dismissHint}>
 			<TimelineViz
 				bind:this={timelineViz}
 				{continents}
@@ -205,6 +263,9 @@
 				touch={coarsePointer.current}
 				onTapEmpty={() => narrow && sheetSnap === 'peek' && handleClosePanel()}
 			/>
+			{#if hintVisible}
+				<div class="touch-hint" role="status">Pinch to zoom · tap a dot</div>
+			{/if}
 		</div>
 		{#snippet panelContent()}
 			{#if selectedEvent}
@@ -365,6 +426,35 @@
 		flex: 1;
 		min-height: 0;
 		transition: none;
+	}
+
+	.timeline-pane {
+		position: relative;
+	}
+
+	.touch-hint {
+		position: absolute;
+		left: 50%;
+		bottom: 20px;
+		transform: translateX(-50%);
+		z-index: 6;
+		padding: 9px 16px;
+		border-radius: 999px;
+		background: rgba(26, 26, 46, 0.95);
+		border: 1px solid #3a3a5a;
+		color: #e8e0d0;
+		font-size: 13px;
+		white-space: nowrap;
+		pointer-events: none;
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+		animation: hint-in 0.4s ease-out 0.6s both;
+	}
+
+	@keyframes hint-in {
+		from {
+			opacity: 0;
+			transform: translate(-50%, 8px);
+		}
 	}
 
 	.sheet-bar {
