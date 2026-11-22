@@ -13,6 +13,7 @@ export const continents: Continent[] = [
 	{
 		id: 'africa',
 		name: 'Africa',
+		shortName: 'Africa',
 		color: '#E8A045',
 		activityKeyframes: [
 			{ year: -3_000_000, score: 90 },
@@ -43,6 +44,7 @@ export const continents: Continent[] = [
 	{
 		id: 'asia',
 		name: 'Asia',
+		shortName: 'Asia',
 		color: '#C85A5A',
 		activityKeyframes: [
 			{ year: -3_000_000, score: 15 },
@@ -73,6 +75,7 @@ export const continents: Continent[] = [
 	{
 		id: 'europe',
 		name: 'Europe',
+		shortName: 'Europe',
 		color: '#5A7EC8',
 		activityKeyframes: [
 			{ year: -3_000_000, score: 5 },
@@ -102,6 +105,7 @@ export const continents: Continent[] = [
 	{
 		id: 'north-america',
 		name: 'N. America',
+		shortName: 'N.Am',
 		color: '#5AC87A',
 		activityKeyframes: [
 			{ year: -3_000_000, score: 5 },
@@ -126,6 +130,7 @@ export const continents: Continent[] = [
 	{
 		id: 'south-america',
 		name: 'S. America',
+		shortName: 'S.Am',
 		color: '#5AC8B8',
 		activityKeyframes: [
 			{ year: -3_000_000, score: 5 },
@@ -149,6 +154,7 @@ export const continents: Continent[] = [
 	{
 		id: 'oceania',
 		name: 'Oceania',
+		shortName: 'Oceania',
 		color: '#A85AC8',
 		activityKeyframes: [
 			{ year: -3_000_000, score: 5 },

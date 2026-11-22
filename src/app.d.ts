@@ -5,7 +5,10 @@ declare global {
 		// interface Error {}
 		// interface Locals {}
 		// interface PageData {}
-		// interface PageState {}
+		interface PageState {
+			/** Set on the history entry pushed while the phone bottom sheet is open. */
+			sheet?: boolean;
+		}
 		// interface Platform {}
 	}
 }

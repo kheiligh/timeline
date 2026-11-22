@@ -213,4 +213,10 @@
 		color: #8a8aa0;
 		margin-top: 8px;
 	}
+
+	@media (max-width: 767px) {
+		.results {
+			padding: 8px 20px 32px;
+		}
+	}
 </style>

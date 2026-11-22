@@ -1,11 +1,17 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/state';
 	import TimelineViz from '#lib/components/TimelineViz.svelte';
 	import DetailPanel from '#lib/components/DetailPanel.svelte';
 	import SidePanel from '#lib/components/SidePanel.svelte';
+	import BottomSheet, { type SheetSnap } from '#lib/components/BottomSheet.svelte';
+	import EventPeek from '#lib/components/EventPeek.svelte';
 	import SearchBar from '#lib/components/SearchBar.svelte';
 	import SearchResults, { type ResultsSort } from '#lib/components/SearchResults.svelte';
 	import { continents } from '#lib/data/continents';
 	import type { TimelineEvent } from '#lib/types';
+	import { coarsePointer, narrowScreen } from '#lib/utils/media.svelte';
 	import { buildSearchIndex, search, MIN_QUERY_LENGTH, type SearchHit } from '#lib/utils/search';
 
 	const SEARCH_DEBOUNCE_MS = 150;
@@ -43,6 +49,101 @@
 	);
 
 	const panelOpen = $derived(!!selectedEvent || resultsOpen);
+
+	// --- Phone layout: bottom sheet ---
+	const narrow = $derived(narrowScreen.current);
+	const PEEK_HEIGHT = 116;
+	let mainHeight = $state(0);
+	let sheetSnap = $state<SheetSnap>('peek');
+	const sheetHeights = $derived<Record<SheetSnap, number>>({
+		peek: PEEK_HEIGHT,
+		half: Math.max(PEEK_HEIGHT + 80, Math.round(mainHeight * 0.55)),
+		full: mainHeight
+	});
+
+	// Each event's continent and its neighbours in the same lane, for the peek card's ‹ › stepping.
+	const laneInfo = (() => {
+		const info = new Map<
+			string,
+			{ continent: (typeof continents)[number]; prev: TimelineEvent | null; next: TimelineEvent | null }
+		>();
+		for (const continent of continents) {
+			continent.events.forEach((event: TimelineEvent, i: number, events: TimelineEvent[]) => {
+				info.set(event.id, {
+					continent,
+					prev: events[i - 1] ?? null,
+					next: events[i + 1] ?? null
+				});
+			});
+		}
+		return info;
+	})();
+	const selectedLane = $derived(selectedEvent ? laneInfo.get(selectedEvent.id) : undefined);
+
+	// --- Phone back button ---
+	// While the sheet is open there is one extra history entry (page.state.sheet). Back pops it:
+	// we step the sheet down one level (full → half, otherwise closed) and re-arm if still open.
+	// Closing the sheet from the UI pops the entry ourselves so it doesn't linger.
+	const sheetOpen = $derived(narrow && panelOpen);
+	let historyArmed = false; // last observed page.state.sheet
+	let pushing = false; // a shallow navigation is on its way
+	let pendingBacks = 0; // history.back() calls we made that haven't landed yet
+
+	$effect(() => {
+		const armed = !!page.state.sheet;
+		const open = sheetOpen;
+		untrack(() => {
+			if (historyArmed && !armed) {
+				if (pendingBacks > 0) pendingBacks--;
+				else if (sheetSnap === 'full') sheetSnap = 'half';
+				else handleClosePanel();
+			}
+			historyArmed = armed;
+			if (armed) pushing = false;
+			if (sheetOpen && !armed) {
+				if (!pushing) {
+					pushing = true;
+					goto(page.url.href, { state: { sheet: true }, shallow: true });
+				}
+			} else if (!open && armed && pendingBacks === 0) {
+				pendingBacks++;
+				history.back();
+			}
+		});
+	});
+
+	// --- One-time gesture hint for touch users ---
+	const HINT_KEY = 'timeline-touch-hint-dismissed';
+	let hintVisible = $state(false);
+
+	$effect(() => {
+		if (!coarsePointer.current) return;
+		try {
+			hintVisible = localStorage.getItem(HINT_KEY) !== '1';
+		} catch {
+			hintVisible = true;
+		}
+	});
+
+	function dismissHint() {
+		if (!hintVisible) return;
+		hintVisible = false;
+		try {
+			localStorage.setItem(HINT_KEY, '1');
+		} catch {
+			// Private mode or blocked storage: the hint just shows again next visit.
+		}
+	}
+
+	// Once the sheet has resized, make sure the selected dot isn't hidden behind it.
+	$effect(() => {
+		if (!narrow || !selectedEvent) return;
+		const id = selectedEvent.id;
+		sheetSnap;
+		mainHeight;
+		const t = setTimeout(() => timelineViz?.ensureVisible(id), 320);
+		return () => clearTimeout(t);
+	});
 
 	type Connection = { event: TimelineEvent; continentName: string; continentColor: string };
 
@@ -84,9 +185,25 @@
 		selectedEvent ? (connectionsById.get(selectedEvent.id) ?? []) : []
 	);
 
-	function handleSelectEvent(event: TimelineEvent) {
+	/**
+	 * `from` decides the sheet height on phones: a timeline tap or ‹ › step shows the peek card,
+	 * a search pick opens the details, and links inside the sheet keep its current height.
+	 */
+	function handleSelectEvent(event: TimelineEvent, from: 'timeline' | 'search' | 'sheet' = 'sheet') {
+		const wasOpen = panelOpen;
 		selectedEvent = event;
-		timelineViz?.scrollToEvent(event.id);
+		if (!narrow) {
+			timelineViz?.scrollToEvent(event.id);
+			return;
+		}
+		if (from === 'timeline') sheetSnap = 'peek';
+		else if (from === 'search' || !wasOpen || sheetSnap === 'peek') sheetSnap = 'half';
+		if (from !== 'timeline') timelineViz?.scrollToEvent(event.id);
+	}
+
+	function handleStep(event: TimelineEvent) {
+		selectedEvent = event;
+		timelineViz?.ensureVisible(event.id);
 	}
 
 	function handleClosePanel() {
@@ -98,6 +215,7 @@
 		searchTerm = query; // skip the debounce
 		selectedEvent = null;
 		resultsOpen = true;
+		if (sheetSnap === 'peek') sheetSnap = 'half';
 	}
 
 	function handleQueryInput() {
@@ -127,32 +245,34 @@
 			{searchTerm}
 			{hits}
 			suppressDropdown={resultsOpen}
-			onSelect={handleSelectEvent}
+			onSelect={(e) => handleSelectEvent(e, 'search')}
 			onShowAll={handleShowAllResults}
 			onInput={handleQueryInput}
 		/>
 	</header>
 
-	<main class="main" class:panel-open={panelOpen}>
-		<div class="timeline-pane">
+	<main class="main" class:panel-open={panelOpen} class:narrow bind:clientHeight={mainHeight}>
+		<div class="timeline-pane" onpointerdowncapture={dismissHint}>
 			<TimelineViz
 				bind:this={timelineViz}
 				{continents}
-				onSelectEvent={handleSelectEvent}
+				onSelectEvent={(e) => handleSelectEvent(e, 'timeline')}
 				selectedId={selectedEvent?.id ?? null}
 				{highlightIds}
+				compact={narrowScreen.current}
+				touch={coarsePointer.current}
+				onTapEmpty={() => narrow && sheetSnap === 'peek' && handleClosePanel()}
 			/>
+			{#if hintVisible}
+				<div class="touch-hint" role="status">Pinch to zoom · tap a dot</div>
+			{/if}
 		</div>
-		<SidePanel
-			open={panelOpen}
-			onClose={handleClosePanel}
-			onBack={resultsOpen && selectedEvent ? () => (selectedEvent = null) : undefined}
-		>
+		{#snippet panelContent()}
 			{#if selectedEvent}
 				<DetailPanel
 					event={selectedEvent}
 					connections={selectedConnections}
-					onSelectEvent={handleSelectEvent}
+					onSelectEvent={(e) => handleSelectEvent(e)}
 				/>
 			{:else if resultsOpen}
 				<SearchResults
@@ -161,10 +281,60 @@
 					pending={query !== searchTerm}
 					bind:sort={resultsSort}
 					bind:scrollTop={resultsScrollTop}
-					onSelectEvent={handleSelectEvent}
+					onSelectEvent={(e) => handleSelectEvent(e)}
 				/>
 			{/if}
-		</SidePanel>
+		{/snippet}
+
+		{#if narrow}
+			{#if panelOpen}
+				<BottomSheet
+					snap={sheetSnap}
+					heights={sheetHeights}
+					onSnapChange={(s) => (sheetSnap = s)}
+					onClose={handleClosePanel}
+				>
+					{#snippet header()}
+						{#if sheetSnap === 'peek' && selectedEvent && selectedLane}
+							<EventPeek
+								event={selectedEvent}
+								continentName={selectedLane.continent.name}
+								continentColor={selectedLane.continent.color}
+								prev={selectedLane.prev}
+								next={selectedLane.next}
+								onStep={handleStep}
+								onOpen={() => (sheetSnap = 'half')}
+								onClose={handleClosePanel}
+							/>
+						{:else if sheetSnap === 'peek'}
+							<button class="sheet-summary" type="button" onclick={() => (sheetSnap = 'half')}>
+								{hits.length} results for &ldquo;{searchTerm.trim()}&rdquo; &uarr;
+							</button>
+						{:else}
+							<div class="sheet-bar">
+								{#if resultsOpen && selectedEvent}
+									<button class="back-btn" type="button" onclick={() => (selectedEvent = null)}
+										>&larr; Back to results</button
+									>
+								{/if}
+								<button class="close-btn" type="button" onclick={handleClosePanel} aria-label="Close"
+									>&#x2715;</button
+								>
+							</div>
+						{/if}
+					{/snippet}
+					{@render panelContent()}
+				</BottomSheet>
+			{/if}
+		{:else}
+			<SidePanel
+				open={panelOpen}
+				onClose={handleClosePanel}
+				onBack={resultsOpen && selectedEvent ? () => (selectedEvent = null) : undefined}
+			>
+				{@render panelContent()}
+			</SidePanel>
+		{/if}
 	</main>
 </div>
 
@@ -192,6 +362,7 @@
 		display: flex;
 		flex-direction: column;
 		height: 100vh;
+		height: 100dvh;
 	}
 
 	.header {
@@ -204,6 +375,7 @@
 		justify-content: space-between;
 		padding-right: 16px;
 		gap: 16px;
+		position: relative;
 	}
 
 	.header-inner {
@@ -243,5 +415,102 @@
 
 	.main.panel-open .timeline-pane {
 		width: 33.333%;
+	}
+
+	.main.narrow {
+		flex-direction: column;
+	}
+
+	.main.narrow .timeline-pane {
+		width: 100%;
+		flex: 1;
+		min-height: 0;
+		transition: none;
+	}
+
+	.timeline-pane {
+		position: relative;
+	}
+
+	.touch-hint {
+		position: absolute;
+		left: 50%;
+		bottom: 20px;
+		transform: translateX(-50%);
+		z-index: 6;
+		padding: 9px 16px;
+		border-radius: 999px;
+		background: rgba(26, 26, 46, 0.95);
+		border: 1px solid #3a3a5a;
+		color: #e8e0d0;
+		font-size: 13px;
+		white-space: nowrap;
+		pointer-events: none;
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+		animation: hint-in 0.4s ease-out 0.6s both;
+	}
+
+	@keyframes hint-in {
+		from {
+			opacity: 0;
+			transform: translate(-50%, 8px);
+		}
+	}
+
+	.sheet-bar {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 0 12px 4px 20px;
+		min-height: 40px;
+	}
+
+	.back-btn {
+		background: none;
+		border: none;
+		color: #7a7ac8;
+		font: inherit;
+		font-size: 14px;
+		cursor: pointer;
+		padding: 8px 0;
+	}
+
+	.close-btn {
+		margin-left: auto;
+		background: none;
+		border: none;
+		color: #6a6a8a;
+		font-size: 15px;
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+	}
+
+	.sheet-summary {
+		display: block;
+		width: 100%;
+		padding: 16px 20px;
+		background: none;
+		border: none;
+		color: #c0b8b0;
+		font: inherit;
+		font-size: 15px;
+		text-align: left;
+		cursor: pointer;
+	}
+
+	@media (max-width: 767px) {
+		.header {
+			height: 48px;
+			padding-right: 8px;
+		}
+
+		.header-inner {
+			padding: 0 16px;
+		}
+
+		.site-subtitle {
+			display: none;
+		}
 	}
 </style>

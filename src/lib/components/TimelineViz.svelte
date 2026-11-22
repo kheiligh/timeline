@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount, tick } from 'svelte';
+	import { flushSync, onMount } from 'svelte';
 	import type { Continent, TimelineEvent } from '#lib/types';
 	import {
 		computeBandPath,
@@ -8,6 +8,7 @@
 		getYearLabels,
 		BASE_HEIGHT,
 		LEFT_PADDING,
+		LEFT_PADDING_COMPACT,
 		TOP_PADDING
 	} from '#lib/utils/timeline';
 
@@ -17,9 +18,23 @@
 		selectedId?: string | null;
 		/** When set, dots not in this set are dimmed (e.g. while search results are open). */
 		highlightIds?: Set<string> | null;
+		/** Phone layout: narrow year axis and short continent labels. */
+		compact?: boolean;
+		/** Touch input: nearest-dot tap targets, pinch zoom, zoom buttons, no hover tooltip. */
+		touch?: boolean;
+		/** Touch only: a tap that wasn't near any dot. */
+		onTapEmpty?: () => void;
 	}
 
-	let { continents, onSelectEvent, selectedId = null, highlightIds = null }: Props = $props();
+	let {
+		continents,
+		onSelectEvent,
+		selectedId = null,
+		highlightIds = null,
+		compact = false,
+		touch = false,
+		onTapEmpty
+	}: Props = $props();
 
 	let containerWidth = $state(900);
 	let hoveredEvent = $state<(TimelineEvent & { x: number; y: number }) | null>(null);
@@ -31,14 +46,15 @@
 	const MAX_ZOOM = 10;
 
 	const totalHeight = $derived(BASE_HEIGHT * zoomLevel);
-	const laneWidth = $derived((containerWidth - LEFT_PADDING - RIGHT_PADDING) / continents.length);
+	const leftPadding = $derived(compact ? LEFT_PADDING_COMPACT : LEFT_PADDING);
+	const laneWidth = $derived((containerWidth - leftPadding - RIGHT_PADDING) / continents.length);
 	// Bands at full activity nearly touch: 98% of the old 18% inter-band gap is removed.
 	const BAND_FILL = 1 - 0.18 * 0.02;
 	const maxHalfWidth = $derived((laneWidth / 2) * BAND_FILL);
 
 	const DOT_RADIUS = 5;
 	const DOT_SPACING = DOT_RADIUS * 2 + 2; // minimum center-to-center distance between dots
-	const yearLabels = $derived(getYearLabels(totalHeight));
+	const yearLabels = $derived(getYearLabels(totalHeight, compact));
 
 	type BandEvent = TimelineEvent & { x: number; y: number };
 	type BandData = {
@@ -50,7 +66,7 @@
 
 	const bandData = $derived<BandData[]>(
 		continents.map((continent, i) => {
-			const centerX = LEFT_PADDING + laneWidth * (i + 0.5);
+			const centerX = leftPadding + laneWidth * (i + 0.5);
 			return {
 				continent,
 				path: computeBandPath(continent.activityKeyframes, centerX, maxHalfWidth, totalHeight),
@@ -131,30 +147,50 @@
 		el.scrollTo({ top: y - el.clientHeight / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
 	}
 
+	/** Scrolls only if the event's dot is outside the visible area (with a small margin). */
+	export function ensureVisible(id: string) {
+		const el = scrollAreaEl;
+		if (!el || el.clientHeight < 80) return;
+		const year = continents.flatMap((c) => c.events).find((e) => e.id === id)?.year;
+		if (year === undefined) return;
+		const y = yearToPixel(year, totalHeight);
+		const margin = 40;
+		if (y >= el.scrollTop + margin && y <= el.scrollTop + el.clientHeight - margin) return;
+		scrollToEvent(id);
+	}
+
+	/**
+	 * Sets the zoom and scrolls so the point that was at `fraction` of the timeline's height
+	 * ends up `anchorY` px below the top of the scroll area.
+	 */
+	function applyZoom(newZoom: number, fraction: number, anchorY: number) {
+		const el = scrollAreaEl;
+		zoomLevel = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, newZoom));
+		if (!el) return;
+		flushSync();
+		el.scrollTop = fraction * BASE_HEIGHT * zoomLevel - anchorY;
+	}
+
+	/** Zooms while keeping whatever is `anchorY` px below the scroll area's top in place. */
+	function zoomAround(newZoom: number, anchorY: number) {
+		const el = scrollAreaEl;
+		const fraction = el ? (el.scrollTop + anchorY) / totalHeight : 0.5;
+		applyZoom(newZoom, fraction, anchorY);
+	}
+
+	function zoomAtCenter(newZoom: number) {
+		zoomAround(newZoom, (scrollAreaEl?.clientHeight ?? 0) / 2);
+	}
+
 	// Zoom via pinch (trackpad) and ctrl/cmd+scroll
 	function handleWheel(e: WheelEvent) {
 		if (!e.ctrlKey && !e.metaKey) return;
 		e.preventDefault();
-
 		const el = scrollAreaEl;
 		if (!el) return;
-
-		const rect = el.getBoundingClientRect();
-		const mouseY = e.clientY - rect.top;
-		const scrollY = el.scrollTop;
-		const focalFraction = (scrollY + mouseY) / totalHeight;
-
-		const delta = -e.deltaY * 0.01;
-		const newZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoomLevel + delta));
+		const newZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoomLevel - e.deltaY * 0.01));
 		if (newZoom === zoomLevel) return;
-
-		zoomLevel = newZoom;
-
-		// Adjust scroll to keep focal point stable
-		tick().then(() => {
-			const newTotal = BASE_HEIGHT * zoomLevel;
-			el.scrollTop = focalFraction * newTotal - mouseY;
-		});
+		zoomAround(newZoom, e.clientY - el.getBoundingClientRect().top);
 	}
 
 	// Zoom via keyboard: ctrl/cmd + / -
@@ -165,40 +201,95 @@
 
 		if (!isZoomIn && !isZoomOut && !isReset) return;
 		e.preventDefault();
-
-		const el = scrollAreaEl;
-		const viewportMidY = el ? el.scrollTop + el.clientHeight / 2 : 0;
-		const focalFraction = el ? viewportMidY / totalHeight : 0.5;
-
-		if (isReset) {
-			zoomLevel = 1;
-		} else if (isZoomIn) {
-			zoomLevel = Math.min(MAX_ZOOM, zoomLevel * 1.3);
-		} else {
-			zoomLevel = Math.max(MIN_ZOOM, zoomLevel / 1.3);
-		}
-
-		if (el) {
-			tick().then(() => {
-				const newTotal = BASE_HEIGHT * zoomLevel;
-				el.scrollTop = focalFraction * newTotal - el.clientHeight / 2;
-			});
-		}
+		zoomAtCenter(isReset ? 1 : isZoomIn ? zoomLevel * 1.3 : zoomLevel / 1.3);
 	}
 
-	// Register wheel listener as non-passive so we can preventDefault
+	// Two-finger pinch on touch screens: zooms the time axis only. The year under the fingers'
+	// midpoint stays under it, so moving both fingers also scrolls.
+	let pinch: { startDist: number; startZoom: number; fraction: number } | null = null;
+
+	function touchGeometry(e: TouchEvent) {
+		const [a, b] = [e.touches[0], e.touches[1]];
+		const top = scrollAreaEl!.getBoundingClientRect().top;
+		return {
+			dist: Math.max(1, Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY)),
+			midY: (a.clientY + b.clientY) / 2 - top
+		};
+	}
+
+	function handleTouchStart(e: TouchEvent) {
+		if (e.touches.length !== 2 || !scrollAreaEl) return;
+		const { dist, midY } = touchGeometry(e);
+		pinch = {
+			startDist: dist,
+			startZoom: zoomLevel,
+			fraction: (scrollAreaEl.scrollTop + midY) / totalHeight
+		};
+	}
+
+	function handleTouchMove(e: TouchEvent) {
+		if (!pinch || e.touches.length !== 2) return;
+		e.preventDefault();
+		const { dist, midY } = touchGeometry(e);
+		applyZoom(pinch.startZoom * (dist / pinch.startDist), pinch.fraction, midY);
+	}
+
+	function handleTouchEnd(e: TouchEvent) {
+		if (e.touches.length < 2) pinch = null;
+	}
+
+	// Register wheel/touch listeners as non-passive so they can preventDefault
 	onMount(() => {
 		const el = scrollAreaEl;
 		if (!el) return;
+		const preventGesture = (e: Event) => e.preventDefault(); // iOS Safari page pinch-zoom
 		el.addEventListener('wheel', handleWheel, { passive: false });
-		return () => el.removeEventListener('wheel', handleWheel);
+		el.addEventListener('touchstart', handleTouchStart, { passive: true });
+		el.addEventListener('touchmove', handleTouchMove, { passive: false });
+		el.addEventListener('touchend', handleTouchEnd);
+		el.addEventListener('touchcancel', handleTouchEnd);
+		el.addEventListener('gesturestart', preventGesture);
+		return () => {
+			el.removeEventListener('wheel', handleWheel);
+			el.removeEventListener('touchstart', handleTouchStart);
+			el.removeEventListener('touchmove', handleTouchMove);
+			el.removeEventListener('touchend', handleTouchEnd);
+			el.removeEventListener('touchcancel', handleTouchEnd);
+			el.removeEventListener('gesturestart', preventGesture);
+		};
 	});
+
+	const TAP_RADIUS = 22;
+
+	// On touch screens a tap picks the nearest dot within TAP_RADIUS, since 10px dots are far
+	// smaller than a fingertip. Mouse clicks still go to the dot directly.
+	function handleSvgClick(e: MouseEvent) {
+		if (!touch) return;
+		const rect = (e.currentTarget as SVGSVGElement).getBoundingClientRect();
+		const x = e.clientX - rect.left;
+		const y = e.clientY - rect.top;
+		let best: BandEvent | null = null;
+		let bestDist = TAP_RADIUS;
+		for (const band of bandData) {
+			for (const dot of band.events) {
+				if (Math.abs(dot.y - y) > TAP_RADIUS) continue;
+				const d = Math.hypot(dot.x - x, dot.y - y);
+				if (d <= bestDist) {
+					best = dot;
+					bestDist = d;
+				}
+			}
+		}
+		if (best) onSelectEvent(best);
+		else onTapEmpty?.();
+	}
 
 	function handleEventClick(event: BandEvent) {
 		onSelectEvent(event);
 	}
 
 	function handleEventEnter(event: BandEvent) {
+		if (touch) return; // taps also fire emulated mouseenter
 		hoveredEvent = event;
 	}
 
@@ -216,27 +307,45 @@
 
 <div class="viz-wrapper" bind:clientWidth={containerWidth}>
 	<!-- Sticky continent labels -->
-	<div class="continent-labels" style="padding-left: {LEFT_PADDING}px;">
+	<div class="continent-labels" class:compact style="padding-left: {leftPadding}px;">
 		{#each bandData as band}
 			<div class="continent-label" style="width: {laneWidth}px; color: {band.continent.color};">
-				{band.continent.name}
+				{compact ? band.continent.shortName : band.continent.name}
 			</div>
 		{/each}
-		{#if zoomLevel > 1.05}
+		{#if zoomLevel > 1.05 && !compact}
 			<div class="zoom-indicator">{Math.round(zoomLevel * 100)}%</div>
 		{/if}
 	</div>
 
+	{#if touch}
+		<div class="zoom-controls">
+			<button
+				type="button"
+				aria-label="Zoom in"
+				disabled={zoomLevel >= MAX_ZOOM}
+				onclick={() => zoomAtCenter(zoomLevel * 1.5)}>+</button
+			>
+			<button
+				type="button"
+				aria-label="Zoom out"
+				disabled={zoomLevel <= MIN_ZOOM}
+				onclick={() => zoomAtCenter(zoomLevel / 1.5)}>&minus;</button
+			>
+		</div>
+	{/if}
+
 	<!-- Scrollable SVG -->
-	<div class="scroll-area" bind:this={scrollAreaEl}>
-		<svg width={containerWidth} height={totalHeight}>
+	<div class="scroll-area" class:touch bind:this={scrollAreaEl}>
+		<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
+		<svg width={containerWidth} height={totalHeight} onclick={handleSvgClick}>
 			<!-- Background -->
 			<rect width={containerWidth} height={totalHeight} fill="#0d0d12" />
 
 			<!-- Gridlines and year labels -->
 			{#each yearLabels as label}
 				<line
-					x1={LEFT_PADDING}
+					x1={leftPadding}
 					y1={label.y}
 					x2={containerWidth - RIGHT_PADDING}
 					y2={label.y}
@@ -244,11 +353,12 @@
 					stroke-width="1"
 				/>
 				<text
-					x={LEFT_PADDING - 6}
+					x={leftPadding - (compact ? 4 : 6)}
 					y={label.y}
 					text-anchor="end"
 					dominant-baseline="middle"
 					class="year-label"
+					class:compact
 				>
 					{label.label}
 				</text>
@@ -295,7 +405,7 @@
 						role="button"
 						tabindex="0"
 						aria-label={event.title}
-						onclick={() => handleEventClick(event)}
+						onclick={() => !touch && handleEventClick(event)}
 						onmouseenter={() => handleEventEnter(event)}
 						onmouseleave={handleEventLeave}
 						onkeydown={(e) => e.key === 'Enter' && handleEventClick(event)}
@@ -346,6 +456,7 @@
 
 <style>
 	.viz-wrapper {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		height: 100%;
@@ -373,6 +484,13 @@
 		opacity: 0.9;
 	}
 
+	.continent-labels.compact .continent-label {
+		font-size: 9px;
+		letter-spacing: 0.02em;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
 	.zoom-indicator {
 		position: absolute;
 		right: 12px;
@@ -393,11 +511,60 @@
 		flex: 1;
 	}
 
+	/* One finger scrolls natively; pinch is handled in JS instead of zooming the page. */
+	.scroll-area.touch {
+		touch-action: pan-y;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	.zoom-controls {
+		position: absolute;
+		right: 10px;
+		bottom: 12px;
+		z-index: 5;
+		display: flex;
+		flex-direction: column;
+		border: 1px solid #2a2a3a;
+		border-radius: 10px;
+		overflow: hidden;
+		background: rgba(20, 20, 31, 0.92);
+		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+	}
+
+	.zoom-controls button {
+		width: 44px;
+		height: 44px;
+		background: none;
+		border: none;
+		color: #c0b8b0;
+		font-size: 22px;
+		line-height: 1;
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	.zoom-controls button + button {
+		border-top: 1px solid #2a2a3a;
+	}
+
+	.zoom-controls button:active:not(:disabled) {
+		background: #1e1e32;
+	}
+
+	.zoom-controls button:disabled {
+		color: #3a3a5a;
+	}
+
 	.year-label {
 		font-size: 10px;
 		fill: #7a7a9a;
 		font-family: 'JetBrains Mono', 'Courier New', monospace;
 		letter-spacing: -0.02em;
+	}
+
+	.year-label.compact {
+		font-size: 8.5px;
+		letter-spacing: -0.04em;
 	}
 
 	.event-dot {
