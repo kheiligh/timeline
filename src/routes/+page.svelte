@@ -2,6 +2,8 @@
 	import TimelineViz from '#lib/components/TimelineViz.svelte';
 	import DetailPanel from '#lib/components/DetailPanel.svelte';
 	import SidePanel from '#lib/components/SidePanel.svelte';
+	import BottomSheet, { type SheetSnap } from '#lib/components/BottomSheet.svelte';
+	import EventPeek from '#lib/components/EventPeek.svelte';
 	import SearchBar from '#lib/components/SearchBar.svelte';
 	import SearchResults, { type ResultsSort } from '#lib/components/SearchResults.svelte';
 	import { continents } from '#lib/data/continents';
@@ -45,6 +47,46 @@
 
 	const panelOpen = $derived(!!selectedEvent || resultsOpen);
 
+	// --- Phone layout: bottom sheet ---
+	const narrow = $derived(narrowScreen.current);
+	const PEEK_HEIGHT = 116;
+	let mainHeight = $state(0);
+	let sheetSnap = $state<SheetSnap>('peek');
+	const sheetHeights = $derived<Record<SheetSnap, number>>({
+		peek: PEEK_HEIGHT,
+		half: Math.max(PEEK_HEIGHT + 80, Math.round(mainHeight * 0.55)),
+		full: mainHeight
+	});
+
+	// Each event's continent and its neighbours in the same lane, for the peek card's ‹ › stepping.
+	const laneInfo = (() => {
+		const info = new Map<
+			string,
+			{ continent: (typeof continents)[number]; prev: TimelineEvent | null; next: TimelineEvent | null }
+		>();
+		for (const continent of continents) {
+			continent.events.forEach((event, i, events) => {
+				info.set(event.id, {
+					continent,
+					prev: events[i - 1] ?? null,
+					next: events[i + 1] ?? null
+				});
+			});
+		}
+		return info;
+	})();
+	const selectedLane = $derived(selectedEvent ? laneInfo.get(selectedEvent.id) : undefined);
+
+	// Once the sheet has resized, make sure the selected dot isn't hidden behind it.
+	$effect(() => {
+		if (!narrow || !selectedEvent) return;
+		const id = selectedEvent.id;
+		sheetSnap;
+		mainHeight;
+		const t = setTimeout(() => timelineViz?.ensureVisible(id), 320);
+		return () => clearTimeout(t);
+	});
+
 	type Connection = { event: TimelineEvent; continentName: string; continentColor: string };
 
 	// Cross-references are treated as bidirectional: if A lists B, B also links back to A.
@@ -85,9 +127,25 @@
 		selectedEvent ? (connectionsById.get(selectedEvent.id) ?? []) : []
 	);
 
-	function handleSelectEvent(event: TimelineEvent) {
+	/**
+	 * `from` decides the sheet height on phones: a timeline tap or ‹ › step shows the peek card,
+	 * a search pick opens the details, and links inside the sheet keep its current height.
+	 */
+	function handleSelectEvent(event: TimelineEvent, from: 'timeline' | 'search' | 'sheet' = 'sheet') {
+		const wasOpen = panelOpen;
 		selectedEvent = event;
-		timelineViz?.scrollToEvent(event.id);
+		if (!narrow) {
+			timelineViz?.scrollToEvent(event.id);
+			return;
+		}
+		if (from === 'timeline') sheetSnap = 'peek';
+		else if (from === 'search' || !wasOpen || sheetSnap === 'peek') sheetSnap = 'half';
+		if (from !== 'timeline') timelineViz?.scrollToEvent(event.id);
+	}
+
+	function handleStep(event: TimelineEvent) {
+		selectedEvent = event;
+		timelineViz?.ensureVisible(event.id);
 	}
 
 	function handleClosePanel() {
@@ -99,6 +157,7 @@
 		searchTerm = query; // skip the debounce
 		selectedEvent = null;
 		resultsOpen = true;
+		if (sheetSnap === 'peek') sheetSnap = 'half';
 	}
 
 	function handleQueryInput() {
@@ -128,33 +187,29 @@
 			{searchTerm}
 			{hits}
 			suppressDropdown={resultsOpen}
-			onSelect={handleSelectEvent}
+			onSelect={(e) => handleSelectEvent(e, 'search')}
 			onShowAll={handleShowAllResults}
 			onInput={handleQueryInput}
 		/>
 	</header>
 
-	<main class="main" class:panel-open={panelOpen}>
+	<main class="main" class:panel-open={panelOpen} class:narrow bind:clientHeight={mainHeight}>
 		<div class="timeline-pane">
 			<TimelineViz
 				bind:this={timelineViz}
 				{continents}
-				onSelectEvent={handleSelectEvent}
+				onSelectEvent={(e) => handleSelectEvent(e, 'timeline')}
 				selectedId={selectedEvent?.id ?? null}
 				{highlightIds}
 				compact={narrowScreen.current}
 			/>
 		</div>
-		<SidePanel
-			open={panelOpen}
-			onClose={handleClosePanel}
-			onBack={resultsOpen && selectedEvent ? () => (selectedEvent = null) : undefined}
-		>
+		{#snippet panelContent()}
 			{#if selectedEvent}
 				<DetailPanel
 					event={selectedEvent}
 					connections={selectedConnections}
-					onSelectEvent={handleSelectEvent}
+					onSelectEvent={(e) => handleSelectEvent(e)}
 				/>
 			{:else if resultsOpen}
 				<SearchResults
@@ -163,10 +218,60 @@
 					pending={query !== searchTerm}
 					bind:sort={resultsSort}
 					bind:scrollTop={resultsScrollTop}
-					onSelectEvent={handleSelectEvent}
+					onSelectEvent={(e) => handleSelectEvent(e)}
 				/>
 			{/if}
-		</SidePanel>
+		{/snippet}
+
+		{#if narrow}
+			{#if panelOpen}
+				<BottomSheet
+					snap={sheetSnap}
+					heights={sheetHeights}
+					onSnapChange={(s) => (sheetSnap = s)}
+					onClose={handleClosePanel}
+				>
+					{#snippet header()}
+						{#if sheetSnap === 'peek' && selectedEvent && selectedLane}
+							<EventPeek
+								event={selectedEvent}
+								continentName={selectedLane.continent.name}
+								continentColor={selectedLane.continent.color}
+								prev={selectedLane.prev}
+								next={selectedLane.next}
+								onStep={handleStep}
+								onOpen={() => (sheetSnap = 'half')}
+								onClose={handleClosePanel}
+							/>
+						{:else if sheetSnap === 'peek'}
+							<button class="sheet-summary" type="button" onclick={() => (sheetSnap = 'half')}>
+								{hits.length} results for &ldquo;{searchTerm.trim()}&rdquo; &uarr;
+							</button>
+						{:else}
+							<div class="sheet-bar">
+								{#if resultsOpen && selectedEvent}
+									<button class="back-btn" type="button" onclick={() => (selectedEvent = null)}
+										>&larr; Back to results</button
+									>
+								{/if}
+								<button class="close-btn" type="button" onclick={handleClosePanel} aria-label="Close"
+									>&#x2715;</button
+								>
+							</div>
+						{/if}
+					{/snippet}
+					{@render panelContent()}
+				</BottomSheet>
+			{/if}
+		{:else}
+			<SidePanel
+				open={panelOpen}
+				onClose={handleClosePanel}
+				onBack={resultsOpen && selectedEvent ? () => (selectedEvent = null) : undefined}
+			>
+				{@render panelContent()}
+			</SidePanel>
+		{/if}
 	</main>
 </div>
 
@@ -247,6 +352,59 @@
 
 	.main.panel-open .timeline-pane {
 		width: 33.333%;
+	}
+
+	.main.narrow {
+		flex-direction: column;
+	}
+
+	.main.narrow .timeline-pane {
+		width: 100%;
+		flex: 1;
+		min-height: 0;
+		transition: none;
+	}
+
+	.sheet-bar {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 0 12px 4px 20px;
+		min-height: 40px;
+	}
+
+	.back-btn {
+		background: none;
+		border: none;
+		color: #7a7ac8;
+		font: inherit;
+		font-size: 14px;
+		cursor: pointer;
+		padding: 8px 0;
+	}
+
+	.close-btn {
+		margin-left: auto;
+		background: none;
+		border: none;
+		color: #6a6a8a;
+		font-size: 15px;
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+	}
+
+	.sheet-summary {
+		display: block;
+		width: 100%;
+		padding: 16px 20px;
+		background: none;
+		border: none;
+		color: #c0b8b0;
+		font: inherit;
+		font-size: 15px;
+		text-align: left;
+		cursor: pointer;
 	}
 
 	@media (max-width: 767px) {

@@ -141,6 +141,18 @@
 		el.scrollTo({ top: y - el.clientHeight / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
 	}
 
+	/** Scrolls only if the event's dot is outside the visible area (with a small margin). */
+	export function ensureVisible(id: string) {
+		const el = scrollAreaEl;
+		if (!el || el.clientHeight < 80) return;
+		const year = continents.flatMap((c) => c.events).find((e) => e.id === id)?.year;
+		if (year === undefined) return;
+		const y = yearToPixel(year, totalHeight);
+		const margin = 40;
+		if (y >= el.scrollTop + margin && y <= el.scrollTop + el.clientHeight - margin) return;
+		scrollToEvent(id);
+	}
+
 	// Zoom via pinch (trackpad) and ctrl/cmd+scroll
 	function handleWheel(e: WheelEvent) {
 		if (!e.ctrlKey && !e.metaKey) return;

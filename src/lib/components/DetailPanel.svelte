@@ -233,4 +233,14 @@
 	.arrow {
 		font-size: 12px;
 	}
+
+	@media (max-width: 767px) {
+		.panel-inner {
+			padding: 0 20px 32px;
+		}
+
+		.event-title {
+			font-size: 22px;
+		}
+	}
 </style>
