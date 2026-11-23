@@ -1051,5 +1051,1101 @@
 			"https://en.wikipedia.org/wiki/Slavery_in_Zanzibar"
 		],
 		"note": "Manual follow-up to PR #3. Slug changed from the Sultanate (1856-1964) article. \"In 1840, Said moved his capital from Muscat to Stone Town in Zanzibar.\" Slavery in Zanzibar: \"upwards of 7,000 Slaves would have to be imported annually\" (higher in some years), so \"tens of thousands\" softened to \"thousands\"."
+	},
+	"asia-agriculture": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Neolithic_Revolution"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-ain-jalut": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Battle_of_Ain_Jalut"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-akkad": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Akkadian_Empire"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-an-lushan": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/An_Lushan_rebellion"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-angkor-wat": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Angkor_Wat"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-aral-sea": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Aral_Sea"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-armenian-genocide": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Armenian_genocide"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-aryabhata": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Aryabhata"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-ashoka": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Ashoka"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-ashurbanipal": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Library_of_Ashurbanipal"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-austronesian-expansion": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Austronesian_peoples"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-avicenna": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/The_Canon_of_Medicine"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-axial-age": {
+		"lastChecked": "2026-11-23",
+		"status": "disputed",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Axial_Age"
+		],
+		"note": "Axial Age is Jaspers' contested framework; text presents it as a \"remarkable convergence\". No edit."
+	},
+	"asia-babylonian-exile": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Babylonian_captivity"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-baghdad": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Round_City_of_Baghdad"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-baghdad-sack": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Siege_of_Baghdad"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-banda": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Dutch_conquest_of_the_Banda_Islands"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-bandung": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Bandung_Conference"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-bengal-famine-1770": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Great_Bengal_famine_of_1770"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-beringia": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Beringia"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-bhopal": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Bhopal_disaster"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-black-death-origin": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Black_Death"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-borobudur": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Borobudur"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-brahmagupta": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Brahmagupta"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-bronze-age-collapse": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Late_Bronze_Age_collapse"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-catalhoyuk": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Çatalhöyük"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-coffee": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/History_of_coffee"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-covid": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/COVID-19_pandemic"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-crucifixion": {
+		"lastChecked": "2026-11-23",
+		"status": "disputed",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Crucifixion_of_Jesus"
+		],
+		"note": "Wikipedia: \"most likely in AD 30 or AD 33\". Year field uses 30; description gives no year, so no edit."
+	},
+	"asia-cultural-revolution": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Cultural_Revolution"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-cuneiform": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Cuneiform"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-cyrus": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Cyrus_the_Great"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-delhi-sultanate": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Delhi_Sultanate"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-deng-reform": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Reform_and_opening_up"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-denisovans": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Denisovan"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-diamond-sutra": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Diamond_Sutra"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-fall-of-constantinople": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Fall_of_Constantinople"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-flores": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Homo_floresiensis"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-fukushima": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Fukushima_nuclear_accident"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-gilgamesh": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Epic_of_Gilgamesh"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-gobekli-tepe": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Göbekli_Tepe"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-grand-canal": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Grand_Canal_(China)"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-great-leap": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Great_Chinese_Famine"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-green-revolution": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Green_Revolution_in_India"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-gunpowder": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/History_of_gunpowder"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-gupta": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Gupta_Empire"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-hammurabi": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Code_of_Hammurabi"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-han": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Han_dynasty"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-hangul": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Hangul"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-hijra": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Hijrah"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-hiroshima": {
+		"lastChecked": "2026-11-23",
+		"status": "fixed",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki"
+		],
+		"note": "Wikipedia: \"The aerial bombings killed 150,000 to 246,000 people\". Replaced \"over 200,000\" with the estimated range."
+	},
+	"asia-homo-erectus": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Homo_erectus"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-house-of-wisdom": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/House_of_Wisdom"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-india-liberalization": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Economic_liberalisation_in_India"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-indian-independence": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Partition_of_India"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-indian-ocean-trade": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Indian_Ocean_trade"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-indian-rebellion": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Indian_Rebellion_of_1857"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-indus-valley": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Indus_Valley_Civilisation"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-iranian-revolution": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Iranian_Revolution"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-israel": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Israeli_Declaration_of_Independence"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-jericho": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Jericho"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-kamikaze": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Mongol_invasions_of_Japan"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-khmer-empire": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Khmer_Empire"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-khmer-rouge": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Cambodian_genocide"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-korean-war": {
+		"lastChecked": "2026-11-23",
+		"status": "disputed",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Korean_War"
+		],
+		"note": "Casualty estimates for the Korean War vary widely; \"some 3 million\" is within the commonly cited range. No edit."
+	},
+	"asia-krakatoa": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/1883_eruption_of_Krakatoa"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-kushan": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Kushan_Empire"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-mactan": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Battle_of_Mactan"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-mandate-of-heaven": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Mandate_of_Heaven"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-manila-galleon": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Manila_galleon"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-manzikert": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Battle_of_Manzikert"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-mauryan": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Maurya_Empire"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-mehrgarh": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Mehrgarh"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-meiji": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Meiji_Restoration"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-ming": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Ming_dynasty"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-ming-collapse": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Transition_from_Ming_to_Qing"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-mongol-empire": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Mongol_Empire"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-movable-type": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Bi_Sheng"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-mughal": {
+		"lastChecked": "2026-11-23",
+		"status": "disputed",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Mughal_Empire"
+		],
+		"note": "\"About a quarter of the world's economic output\" is an Angus Maddison-based estimate that scholars contest. No edit."
+	},
+	"asia-nanjing": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Nanjing_Massacre"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-new-world-crops": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Columbian_exchange"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-oil-crisis": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/1973_oil_crisis"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-opium-war": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/First_Opium_War"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-oracle-bones": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Oracle_bone_script"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-paper": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Cai_Lun"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-paper-money": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Jiaozi_(currency)"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-peking-man": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Peking_Man"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-perry": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Perry_Expedition"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-persian-oil": {
+		"lastChecked": "2026-11-23",
+		"status": "unverifiable",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Masjed_Soleyman"
+		],
+		"note": "Slug Masjed_Soleyman is only a city stub in the lead and does not cover the oil claims; BP/Anglo-Persian 1908-09 chronology is standard but was not confirmed from a second source this run. Consider slug History_of_the_petroleum_industry_in_Iran or Anglo-Persian_Oil_Company."
+	},
+	"asia-phoenician-alphabet": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Phoenician_alphabet"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-plassey": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Battle_of_Plassey"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-portuguese-goa": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Portuguese_India"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-prc": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Proclamation_of_the_People's_Republic_of_China"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-qin-dynasty": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Qin_Shi_Huang"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-ricci": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Matteo_Ricci"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-rice": {
+		"lastChecked": "2026-11-23",
+		"status": "unverifiable",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Rice#Domestication"
+		],
+		"note": "Slug \"Rice#Domestication\" contains an anchor and could not be fetched as an article title; claims not checked against text. Consider slug Rice or Domesticated_Asian_rice."
+	},
+	"asia-rigveda": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Rigveda"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-royal-road": {
+		"lastChecked": "2026-11-23",
+		"status": "fixed",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Royal_Road"
+		],
+		"note": "Wikipedia: \"Mounted couriers of the Angarium were supposed to travel 1,677 miles (2,699 km) from Susa to Sardis in nine days\". Changed \"about a week\" to \"about nine days\" and framed as expected, not actual."
+	},
+	"asia-russo-japanese": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Russo-Japanese_War"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-safavid": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Safavid_Iran"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-sakoku": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Sakoku"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-saladin": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Saladin"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-salt-march": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Salt_March"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-second-temple": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(70_CE)"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-shinkansen": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Shinkansen"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-silk-road": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Silk_Road"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-sima-qian": {
+		"lastChecked": "2026-11-23",
+		"status": "disputed",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Shiji"
+		],
+		"note": "Wikipedia dates the Shiji only to \"the late 2nd and early 1st centuries BC\"; the 94 BCE year (and completion date) is a convention, not firmly attested. No edit."
+	},
+	"asia-singapore": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/1819_Singapore_Treaty"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-sintashta": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Sintashta_culture"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-song-dynasty": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Song_dynasty"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-sputnik": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Sputnik_1"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-srivijaya": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Srivijaya"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-sulawesi-art": {
+		"lastChecked": "2026-11-23",
+		"status": "disputed",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Karampuang_cave"
+		],
+		"note": "Slug points to Leang Karampuang (2024 narrative scene, ~51,200 years old); year -49000 is derived from that dating. Sulawesi dating is recent and still debated. No edit."
+	},
+	"asia-syrian-war": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Syrian_civil_war"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-taiping": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Taiping_Rebellion"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-taj-mahal": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Taj_Mahal"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-talas": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Battle_of_Talas"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-tale-of-genji": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/The_Tale_of_Genji"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-tambora": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/1815_eruption_of_Mount_Tambora"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-tang-dynasty": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Tang_dynasty"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-three-kingdoms": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Three_Kingdoms"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-tiananmen": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-timur": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Timur"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-toba": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Youngest_Toba_eruption"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-tokugawa": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Tokugawa_shogunate"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-trans-siberian": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Trans-Siberian_Railway"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-tsmc": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/TSMC"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-tsunami": {
+		"lastChecked": "2026-11-23",
+		"status": "disputed",
+		"sources": [
+			"https://en.wikipedia.org/wiki/2004_Indian_Ocean_earthquake_and_tsunami"
+		],
+		"note": "Wikipedia lists Mw 9.2–9.3 for the quake (USGS has long used 9.1). Description now says 9.1–9.3."
+	},
+	"asia-turkey": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Mustafa_Kemal_Atatürk"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-ulugh-beg": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Ulugh_Beg_Observatory"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-uruk": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Uruk"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-vietnam-war": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Vietnam_War"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-wheel": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Wheel"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-xianrendong": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Xianren_Cave"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-xinhai": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/1911_Revolution"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-yuan": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Yuan_dynasty"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
+	},
+	"asia-zheng-he": {
+		"lastChecked": "2026-11-23",
+		"status": "ok",
+		"sources": [
+			"https://en.wikipedia.org/wiki/Zheng_He"
+		],
+		"note": "Checked against the Wikipedia article lead (MediaWiki API); no contradiction found."
 	}
 }
