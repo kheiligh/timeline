@@ -97,7 +97,7 @@
 		display: flex;
 		align-items: center;
 		gap: 6px;
-		font-family: 'JetBrains Mono', 'Courier New', monospace;
+		font-family: 'Cousine', 'Courier New', monospace;
 		font-size: 11px;
 		color: #8a8aaa;
 	}
@@ -110,6 +110,7 @@
 	}
 
 	.title {
+		font-family: var(--font-display);
 		font-size: 16px;
 		font-weight: 600;
 		color: #e8e0d0;

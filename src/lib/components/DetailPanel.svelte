@@ -89,7 +89,7 @@
 	}
 
 	.year-badge {
-		font-family: 'JetBrains Mono', 'Courier New', monospace;
+		font-family: 'Cousine', 'Courier New', monospace;
 		font-size: 12px;
 		color: #8a8aaa;
 		letter-spacing: 0.05em;
@@ -101,6 +101,7 @@
 	}
 
 	.event-title {
+		font-family: var(--font-display);
 		font-size: 26px;
 		font-weight: 700;
 		color: #e8e0d0;
@@ -195,7 +196,7 @@
 		display: flex;
 		align-items: center;
 		gap: 6px;
-		font-family: 'JetBrains Mono', 'Courier New', monospace;
+		font-family: 'Cousine', 'Courier New', monospace;
 		font-size: 11px;
 		color: #7a7a9a;
 	}
@@ -208,6 +209,7 @@
 	}
 
 	.connection-title {
+		font-family: var(--font-display);
 		font-size: 14px;
 		color: #d0c8c0;
 	}
