@@ -103,6 +103,30 @@ export const continents: Continent[] = [
 		events: byYear(europeEvents)
 	},
 	{
+		id: 'oceania',
+		name: 'Oceania',
+		shortName: 'Oceania',
+		color: '#A85AC8',
+		activityKeyframes: [
+			{ year: -3_000_000, score: 5 },
+			{ year: -65_000, score: 32 },
+			{ year: -50_000, score: 42 },
+			{ year: -40_000, score: 48 },
+			{ year: -10_000, score: 45 },
+			{ year: -3_500, score: 50 },
+			{ year: -1_500, score: 55 },
+			{ year: 1000, score: 52 },
+			{ year: 1300, score: 50 },
+			{ year: 1700, score: 28 },
+			{ year: 1788, score: 22 },
+			{ year: 1850, score: 32 },
+			{ year: 1900, score: 38 },
+			{ year: 1960, score: 48 },
+			{ year: 2026, score: 55 }
+		],
+		events: byYear(oceaniaEvents)
+	},
+	{
 		id: 'north-america',
 		name: 'N. America',
 		shortName: 'N.Am',
@@ -150,29 +174,5 @@ export const continents: Continent[] = [
 			{ year: 2026, score: 65 }
 		],
 		events: byYear(southAmericaEvents)
-	},
-	{
-		id: 'oceania',
-		name: 'Oceania',
-		shortName: 'Oceania',
-		color: '#A85AC8',
-		activityKeyframes: [
-			{ year: -3_000_000, score: 5 },
-			{ year: -65_000, score: 32 },
-			{ year: -50_000, score: 42 },
-			{ year: -40_000, score: 48 },
-			{ year: -10_000, score: 45 },
-			{ year: -3_500, score: 50 },
-			{ year: -1_500, score: 55 },
-			{ year: 1000, score: 52 },
-			{ year: 1300, score: 50 },
-			{ year: 1700, score: 28 },
-			{ year: 1788, score: 22 },
-			{ year: 1850, score: 32 },
-			{ year: 1900, score: 38 },
-			{ year: 1960, score: 48 },
-			{ year: 2026, score: 55 }
-		],
-		events: byYear(oceaniaEvents)
 	}
 ];
