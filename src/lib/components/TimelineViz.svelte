@@ -140,26 +140,31 @@
 	}
 
 	/** Scrolls the timeline so the event's dot sits in the vertical center. Keeps zoom as-is. */
-	export function scrollToEvent(id: string) {
+	/** Centres the event's dot. `instant` skips the animation (e.g. when a shared link first opens). */
+	export function scrollToEvent(id: string, instant = false) {
 		const el = scrollAreaEl;
 		if (!el) return;
 		const year = continents.flatMap((c) => c.events).find((e) => e.id === id)?.year;
 		if (year === undefined) return;
 		const y = yearToPixel(year, totalHeight);
 		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-		el.scrollTo({ top: y - el.clientHeight / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+		el.scrollTo({ top: y - el.clientHeight / 2, behavior: instant || reduceMotion ? 'auto' : 'smooth' });
 	}
 
-	/** Scrolls only if the event's dot is outside the visible area (with a small margin). */
-	export function ensureVisible(id: string) {
+	/**
+	 * Scrolls only if the event's dot is outside the visible area (with a small margin).
+	 * Returns false if the timeline hasn't been laid out yet, so the caller can try again.
+	 */
+	export function ensureVisible(id: string, instant = false): boolean {
 		const el = scrollAreaEl;
-		if (!el || el.clientHeight < 80) return;
+		if (!el || el.clientHeight < 80) return false;
 		const year = continents.flatMap((c) => c.events).find((e) => e.id === id)?.year;
-		if (year === undefined) return;
+		if (year === undefined) return true;
 		const y = yearToPixel(year, totalHeight);
 		const margin = 40;
-		if (y >= el.scrollTop + margin && y <= el.scrollTop + el.clientHeight - margin) return;
-		scrollToEvent(id);
+		if (y >= el.scrollTop + margin && y <= el.scrollTop + el.clientHeight - margin) return true;
+		scrollToEvent(id, instant);
+		return true;
 	}
 
 	/**

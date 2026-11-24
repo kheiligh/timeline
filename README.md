@@ -54,3 +54,22 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
+## Testing
+
+```sh
+npm run test:unit   # Vitest: data lookups, history rules, page metadata (fast)
+npm run test:e2e    # Playwright: builds the site, then drives it at desktop and phone sizes
+npm test            # both
+npm run check       # type check
+```
+
+Unit tests sit next to the code they cover (`*.test.ts` under `src/`); browser tests are in `tests/`.
+If Playwright's own browser isn't installed, point it at another Chromium with
+`PLAYWRIGHT_CHROMIUM_PATH=/path/to/chrome npm run test:e2e`.
+
+## Event links
+
+Every event has a shareable address, `/event/<id>`, where the id is the one in `src/lib/data/events/`.
+Those ids are now public: if one ever has to change, add the old id to `src/lib/data/redirects.ts`
+so existing links keep working.

@@ -1,12 +1,9 @@
 <script lang="ts">
 	import type { TimelineEvent } from '#lib/types';
+	import { eventPath, type Connection } from '#lib/data/lookup';
+	import { interceptClick } from '#lib/utils/links';
+	import { coarsePointer } from '#lib/utils/media.svelte';
 	import { formatYear } from '#lib/utils/timeline';
-
-	interface Connection {
-		event: TimelineEvent;
-		continentName: string;
-		continentColor: string;
-	}
 
 	interface Props {
 		event: TimelineEvent;
@@ -15,6 +12,41 @@
 	}
 
 	let { event, connections = [], onSelectEvent }: Props = $props();
+
+	// --- Share / copy link ---
+	type ShareStatus = 'idle' | 'copied' | 'failed';
+	let shareStatus = $state<ShareStatus>('idle');
+	let resetTimer: ReturnType<typeof setTimeout> | undefined;
+
+	// A new event starts with a fresh button.
+	$effect(() => {
+		event.id;
+		shareStatus = 'idle';
+		return () => clearTimeout(resetTimer);
+	});
+
+	// Phones get the system share sheet where there is one; everything else copies the link.
+	const useShareSheet = $derived(coarsePointer.current && typeof navigator !== 'undefined' && !!navigator.share);
+
+	async function share() {
+		const url = new URL(eventPath(event.id), location.origin).href;
+		if (useShareSheet) {
+			try {
+				await navigator.share({ title: event.title, url });
+			} catch {
+				// Dismissed by the visitor: nothing to do.
+			}
+			return;
+		}
+		try {
+			await navigator.clipboard.writeText(url);
+			shareStatus = 'copied';
+		} catch {
+			shareStatus = 'failed';
+		}
+		clearTimeout(resetTimer);
+		resetTimer = setTimeout(() => (shareStatus = 'idle'), 2000);
+	}
 </script>
 
 <div class="panel-inner">
@@ -52,33 +84,48 @@
 			<ul class="connection-list">
 				{#each connections as connection (connection.event.id)}
 					<li>
-						<button
+						<a
 							class="connection"
-							onclick={() => onSelectEvent?.(connection.event)}
+							href={eventPath(connection.event.id)}
+							onclick={interceptClick(() => onSelectEvent?.(connection.event))}
 						>
 							<span class="connection-meta">
 								<span class="connection-dot" style="background: {connection.continentColor};"></span>
 								{connection.continentName} · {formatYear(connection.event.year)}
 							</span>
 							<span class="connection-title">{connection.event.title}</span>
-						</button>
+						</a>
 					</li>
 				{/each}
 			</ul>
 		</div>
 	{/if}
 
-	{#if event.wikipediaSlug}
-		<a
-			class="wiki-link"
-			href="https://en.wikipedia.org/wiki/{event.wikipediaSlug}"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			Read on Wikipedia
-			<span class="arrow">&#x2197;</span>
-		</a>
-	{/if}
+	<div class="links">
+		{#if event.wikipediaSlug}
+			<a
+				class="wiki-link"
+				href="https://en.wikipedia.org/wiki/{event.wikipediaSlug}"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Read on Wikipedia
+				<span class="arrow">&#x2197;</span>
+			</a>
+		{/if}
+		<button class="share-btn" type="button" onclick={share}>
+			{#if useShareSheet}
+				Share
+			{:else if shareStatus === 'copied'}
+				Link copied
+			{:else if shareStatus === 'failed'}
+				Couldn&rsquo;t copy
+			{:else}
+				Copy link
+			{/if}
+		</button>
+	</div>
+	<span class="visually-hidden" role="status">{shareStatus === 'copied' ? 'Link copied' : ''}</span>
 </div>
 
 <style>
@@ -183,6 +230,8 @@
 		flex-direction: column;
 		gap: 2px;
 		font: inherit;
+		color: inherit;
+		text-decoration: none;
 		transition: border-color 0.15s, background 0.15s;
 	}
 
@@ -214,11 +263,19 @@
 		color: var(--text);
 	}
 
-	.wiki-link {
+	.links {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 12px 24px;
+		margin-top: 28px;
+	}
+
+	.wiki-link,
+	.share-btn {
 		display: inline-flex;
 		align-items: center;
 		gap: 4px;
-		margin-top: 28px;
 		font-size: 13px;
 		color: var(--link);
 		text-decoration: none;
@@ -227,9 +284,29 @@
 		transition: color 0.15s, border-color 0.15s;
 	}
 
-	.wiki-link:hover {
+	.share-btn {
+		font-family: inherit;
+		background: none;
+		border: none;
+		border-bottom: 1px solid var(--border-strong);
+		border-radius: 0;
+		cursor: pointer;
+	}
+
+	.wiki-link:hover,
+	.share-btn:hover,
+	.share-btn:focus-visible {
 		color: var(--link-hover);
 		border-color: var(--border-hover);
+	}
+
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
 	}
 
 	.arrow {

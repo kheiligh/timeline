@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { TimelineEvent } from '#lib/types';
+	import { eventPath } from '#lib/data/lookup';
+	import { interceptClick } from '#lib/utils/links';
 	import { formatYear } from '#lib/utils/timeline';
 	import { MIN_QUERY_LENGTH, NO_RESULTS_MESSAGE, tokenize, type SearchHit } from '#lib/utils/search';
 	import Highlight from './Highlight.svelte';
@@ -65,7 +67,11 @@
 			<ul class="list">
 				{#each sorted as hit (hit.event.id)}
 					<li>
-						<button type="button" class="hit" onclick={() => onSelectEvent(hit.event)}>
+						<a
+							class="hit"
+							href={eventPath(hit.event.id)}
+							onclick={interceptClick(() => onSelectEvent(hit.event))}
+						>
 							<span class="meta">
 								<span class="dot" style="background: {hit.continent.color};"></span>
 								{hit.continent.name} · {formatYear(hit.event.year)}
@@ -79,7 +85,7 @@
 									<Highlight text={hit.snippet.text} {tokens} />
 								</span>
 							{/if}
-						</button>
+						</a>
 					</li>
 				{/each}
 			</ul>
@@ -155,6 +161,7 @@
 		gap: 3px;
 		font: inherit;
 		color: inherit;
+		text-decoration: none;
 		transition:
 			border-color 0.15s,
 			background 0.15s;

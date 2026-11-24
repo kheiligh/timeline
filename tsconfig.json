@@ -1,7 +1,13 @@
 {
 	"extends": "$app/tsconfig",
 	"compilerOptions": {
-		"strict": true
+		"strict": true,
+		// Mirrors the "#lib" imports in package.json. TypeScript doesn't add file extensions when
+		// following package imports, so without this the type checker can't find "#lib/..." modules.
+		"paths": {
+			"#lib": ["./src/lib"],
+			"#lib/*": ["./src/lib/*"]
+		}
 	},
 	"include": ["src", "vite.config.ts"]
 }
