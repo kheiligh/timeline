@@ -42,12 +42,15 @@
 	let zoomLevel = $state(1);
 
 	const RIGHT_PADDING = 10;
+	const SHORT_NAME_LANE_WIDTH = 110;
 	const MIN_ZOOM = 1;
 	const MAX_ZOOM = 10;
 
 	const totalHeight = $derived(BASE_HEIGHT * zoomLevel);
 	const leftPadding = $derived(compact ? LEFT_PADDING_COMPACT : LEFT_PADDING);
 	const laneWidth = $derived((containerWidth - leftPadding - RIGHT_PADDING) / continents.length);
+	// Full names like "N. America" wrap in narrower lanes (e.g. with the detail panel open).
+	const useShortNames = $derived(compact || laneWidth < SHORT_NAME_LANE_WIDTH);
 	// Bands at full activity nearly touch: 98% of the old 18% inter-band gap is removed.
 	const BAND_FILL = 1 - 0.18 * 0.02;
 	const maxHalfWidth = $derived((laneWidth / 2) * BAND_FILL);
@@ -310,7 +313,7 @@
 	<div class="continent-labels" class:compact style="padding-left: {leftPadding}px;">
 		{#each bandData as band}
 			<div class="continent-label" style="width: {laneWidth}px; color: {band.continent.color};">
-				{compact ? band.continent.shortName : band.continent.name}
+				{useShortNames ? band.continent.shortName : band.continent.name}
 			</div>
 		{/each}
 		{#if zoomLevel > 1.05 && !compact}
