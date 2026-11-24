@@ -372,7 +372,7 @@
 		display: flex;
 		align-items: center;
 		gap: 6px;
-		font-family: 'JetBrains Mono', 'Courier New', monospace;
+		font-family: 'Cousine', 'Courier New', monospace;
 		font-size: 10.5px;
 		color: #7a7a9a;
 	}

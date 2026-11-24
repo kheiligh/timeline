@@ -497,7 +497,7 @@
 		top: 50%;
 		transform: translateY(-50%);
 		font-size: 10px;
-		font-family: 'JetBrains Mono', 'Courier New', monospace;
+		font-family: 'Cousine', 'Courier New', monospace;
 		color: #4a4a6a;
 		background: #1a1a2e;
 		padding: 2px 6px;
@@ -558,7 +558,7 @@
 	.year-label {
 		font-size: 10px;
 		fill: #7a7a9a;
-		font-family: 'JetBrains Mono', 'Courier New', monospace;
+		font-family: 'Cousine', 'Courier New', monospace;
 		letter-spacing: -0.02em;
 	}
 
@@ -606,6 +606,6 @@
 	.tooltip-year {
 		font-size: 10px;
 		fill: #8a8aaa;
-		font-family: 'JetBrains Mono', 'Courier New', monospace;
+		font-family: 'Cousine', 'Courier New', monospace;
 	}
 </style>

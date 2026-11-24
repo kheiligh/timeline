@@ -97,7 +97,7 @@
 		display: flex;
 		align-items: center;
 		gap: 6px;
-		font-family: 'JetBrains Mono', 'Courier New', monospace;
+		font-family: 'Cousine', 'Courier New', monospace;
 		font-size: 11px;
 		color: #8a8aaa;
 	}
