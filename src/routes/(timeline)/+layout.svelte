@@ -10,20 +10,62 @@
 	import SearchBar from '#lib/components/SearchBar.svelte';
 	import SearchResults, { type ResultsSort } from '#lib/components/SearchResults.svelte';
 	import { continents } from '#lib/data/continents';
+	import { eventPath, lookup } from '#lib/data/lookup';
 	import type { TimelineEvent } from '#lib/types';
+	import {
+		planBackToResults,
+		planClose,
+		planCollapseSheet,
+		planEditQuery,
+		planExpandSheet,
+		planSelect,
+		planShowResults,
+		type HistoryLocation,
+		type NavPlan,
+		type SelectSource
+	} from '#lib/utils/history';
 	import { coarsePointer, narrowScreen } from '#lib/utils/media.svelte';
 	import { buildSearchIndex, search, MIN_QUERY_LENGTH, type SearchHit } from '#lib/utils/search';
+	import type { LayoutProps } from './$types';
+
+	// The timeline lives in this layout so it stays mounted (scroll, zoom) while the URL moves
+	// between / and /event/<id>. The routes underneath only set the page title and preview tags.
+	let { children }: LayoutProps = $props();
 
 	const SEARCH_DEBOUNCE_MS = 150;
 
-	let selectedEvent = $state<TimelineEvent | null>(null);
+	// --- What's open comes from the URL and history state (see #lib/utils/history) ---
+	const selectedEvent = $derived<TimelineEvent | null>(
+		(page.params.id && lookup.byId.get(page.params.id)?.event) || null
+	);
+	const resultsOpen = $derived(!!page.state.results);
+	const here = $derived<HistoryLocation>({ eventId: selectedEvent?.id ?? null, state: page.state });
+
+	function run(plan: NavPlan) {
+		if (plan.kind === 'none') return;
+		if (plan.kind === 'back') {
+			history.go(-plan.steps);
+			return;
+		}
+		const path = plan.eventId ? eventPath(plan.eventId) : '/';
+		goto(path, {
+			replace: plan.replace,
+			state: plan.state,
+			// Same URL, different panel state (results list, sheet height): no page change needed.
+			shallow: path === page.url.pathname,
+			// Keep the window scroll and focus; the timeline scrolls itself.
+			reset: false,
+			// A reload keeps knowing where the closed timeline is in history.
+			persistState: true
+		});
+	}
+
 	let timelineViz = $state<ReturnType<typeof TimelineViz> | null>(null);
 
 	// --- Search ---
 	const searchIndex = buildSearchIndex(continents);
 	let query = $state('');
 	let searchTerm = $state(''); // debounced copy of `query`
-	let resultsOpen = $state(false); // full results view is part of the panel stack
 	let resultsSort = $state<ResultsSort>('relevance');
 	let resultsScrollTop = $state(0);
 
@@ -54,61 +96,32 @@
 	const narrow = $derived(narrowScreen.current);
 	const PEEK_HEIGHT = 116;
 	let mainHeight = $state(0);
-	let sheetSnap = $state<SheetSnap>('peek');
+	// Someone arriving on a shared link wants the details, not just the peek card.
+	let sheetSnap = $state<SheetSnap>(page.params.id ? 'half' : 'peek');
 	const sheetHeights = $derived<Record<SheetSnap, number>>({
 		peek: PEEK_HEIGHT,
 		half: Math.max(PEEK_HEIGHT + 80, Math.round(mainHeight * 0.55)),
 		full: mainHeight
 	});
 
-	// Each event's continent and its neighbours in the same lane, for the peek card's ‹ › stepping.
-	const laneInfo = (() => {
-		const info = new Map<
-			string,
-			{ continent: (typeof continents)[number]; prev: TimelineEvent | null; next: TimelineEvent | null }
-		>();
-		for (const continent of continents) {
-			continent.events.forEach((event: TimelineEvent, i: number, events: TimelineEvent[]) => {
-				info.set(event.id, {
-					continent,
-					prev: events[i - 1] ?? null,
-					next: events[i + 1] ?? null
-				});
-			});
-		}
-		return info;
-	})();
-	const selectedLane = $derived(selectedEvent ? laneInfo.get(selectedEvent.id) : undefined);
+	const selectedLane = $derived(selectedEvent ? lookup.lanes.get(selectedEvent.id) : undefined);
 
-	// --- Phone back button ---
-	// While the sheet is open there is one extra history entry (page.state.sheet). Back pops it:
-	// we step the sheet down one level (full → half, otherwise closed) and re-arm if still open.
-	// Closing the sheet from the UI pops the entry ourselves so it doesn't linger.
-	const sheetOpen = $derived(narrow && panelOpen);
-	let historyArmed = false; // last observed page.state.sheet
-	let pushing = false; // a shallow navigation is on its way
-	let pendingBacks = 0; // history.back() calls we made that haven't landed yet
+	/** The visitor moved the sheet: full height gets its own history entry, so Back steps it down. */
+	function handleSnapChange(snap: SheetSnap) {
+		const was = sheetSnap;
+		sheetSnap = snap;
+		if (snap === 'full' && was !== 'full') run(planExpandSheet(here));
+		else if (was === 'full' && snap !== 'full') run(planCollapseSheet(here));
+	}
 
+	// Back/Forward onto an entry decides the sheet height: full if that entry was full,
+	// otherwise a full sheet steps down to half.
 	$effect(() => {
-		const armed = !!page.state.sheet;
-		const open = sheetOpen;
+		const full = !!page.state.sheetFull;
 		untrack(() => {
-			if (historyArmed && !armed) {
-				if (pendingBacks > 0) pendingBacks--;
-				else if (sheetSnap === 'full') sheetSnap = 'half';
-				else handleClosePanel();
-			}
-			historyArmed = armed;
-			if (armed) pushing = false;
-			if (sheetOpen && !armed) {
-				if (!pushing) {
-					pushing = true;
-					goto(page.url.href, { state: { sheet: true }, shallow: true });
-				}
-			} else if (!open && armed && pendingBacks === 0) {
-				pendingBacks++;
-				history.back();
-			}
+			if (!narrow) return;
+			if (full && sheetSnap !== 'full') sheetSnap = 'full';
+			else if (!full && sheetSnap === 'full') sheetSnap = 'half';
 		});
 	});
 
@@ -135,6 +148,19 @@
 		}
 	}
 
+	// Bring the open event into view when it arrives by URL: a shared link, Back or Forward.
+	// (Clicks scroll straight away in their handlers; this is then a no-op.)
+	let scrolledTo: string | null = null;
+	$effect(() => {
+		const id = selectedEvent?.id ?? null;
+		mainHeight; // re-run once the layout has been measured
+		untrack(() => {
+			if (!id || id === scrolledTo || !timelineViz) return;
+			const firstLoad = scrolledTo === null;
+			if (timelineViz.ensureVisible(id, firstLoad)) scrolledTo = id;
+		});
+	});
+
 	// Once the sheet has resized, make sure the selected dot isn't hidden behind it.
 	$effect(() => {
 		if (!narrow || !selectedEvent) return;
@@ -145,53 +171,19 @@
 		return () => clearTimeout(t);
 	});
 
-	type Connection = { event: TimelineEvent; continentName: string; continentColor: string };
-
-	// Cross-references are treated as bidirectional: if A lists B, B also links back to A.
-	const connectionsById = (() => {
-		const lookup = new Map<string, Connection>();
-		for (const continent of continents) {
-			for (const event of continent.events) {
-				lookup.set(event.id, {
-					event,
-					continentName: continent.name,
-					continentColor: continent.color
-				});
-			}
-		}
-		const ids = new Map<string, Set<string>>();
-		const link = (a: string, b: string) => {
-			if (!ids.has(a)) ids.set(a, new Set());
-			ids.get(a)!.add(b);
-		};
-		for (const { event } of lookup.values()) {
-			for (const relatedId of event.related ?? []) {
-				if (!lookup.has(relatedId) || relatedId === event.id) continue;
-				link(event.id, relatedId);
-				link(relatedId, event.id);
-			}
-		}
-		const result = new Map<string, Connection[]>();
-		for (const [id, set] of ids) {
-			result.set(
-				id,
-				[...set].map((rid) => lookup.get(rid)!).sort((a, b) => a.event.year - b.event.year)
-			);
-		}
-		return result;
-	})();
-
 	const selectedConnections = $derived(
-		selectedEvent ? (connectionsById.get(selectedEvent.id) ?? []) : []
+		selectedEvent ? (lookup.connections.get(selectedEvent.id) ?? []) : []
 	);
 
 	/**
-	 * `from` decides the sheet height on phones: a timeline tap or ‹ › step shows the peek card,
-	 * a search pick opens the details, and links inside the sheet keep its current height.
+	 * `from` decides the history entry (see #lib/utils/history) and the sheet height on phones:
+	 * a timeline tap shows the peek card, a search pick opens the details, and links inside the
+	 * sheet keep its current height.
 	 */
-	function handleSelectEvent(event: TimelineEvent, from: 'timeline' | 'search' | 'sheet' = 'sheet') {
+	function handleSelectEvent(event: TimelineEvent, from: Exclude<SelectSource, 'step'>) {
 		const wasOpen = panelOpen;
-		selectedEvent = event;
+		run(planSelect(here, event.id, from));
+		scrolledTo = event.id;
 		if (!narrow) {
 			timelineViz?.scrollToEvent(event.id);
 			return;
@@ -202,25 +194,28 @@
 	}
 
 	function handleStep(event: TimelineEvent) {
-		selectedEvent = event;
+		run(planSelect(here, event.id, 'step'));
+		scrolledTo = event.id;
 		timelineViz?.ensureVisible(event.id);
 	}
 
 	function handleClosePanel() {
-		selectedEvent = null;
-		resultsOpen = false;
+		run(planClose(here));
+	}
+
+	function handleBackToResults() {
+		run(planBackToResults(here));
 	}
 
 	function handleShowAllResults() {
 		searchTerm = query; // skip the debounce
-		selectedEvent = null;
-		resultsOpen = true;
+		run(planShowResults(here));
 		if (sheetSnap === 'peek') sheetSnap = 'half';
 	}
 
 	function handleQueryInput() {
 		// Typing while browsing search results returns to the (live-updating) list.
-		if (resultsOpen) selectedEvent = null;
+		run(planEditQuery(here));
 	}
 
 	function handleKeydown(e: KeyboardEvent) {
@@ -230,9 +225,7 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<svelte:head>
-	<title>Human History Timeline</title>
-</svelte:head>
+{@render children()}
 
 <div class="app">
 	<header class="header">
@@ -272,7 +265,7 @@
 				<DetailPanel
 					event={selectedEvent}
 					connections={selectedConnections}
-					onSelectEvent={(e) => handleSelectEvent(e)}
+					onSelectEvent={(e) => handleSelectEvent(e, 'connection')}
 				/>
 			{:else if resultsOpen}
 				<SearchResults
@@ -281,7 +274,7 @@
 					pending={query !== searchTerm}
 					bind:sort={resultsSort}
 					bind:scrollTop={resultsScrollTop}
-					onSelectEvent={(e) => handleSelectEvent(e)}
+					onSelectEvent={(e) => handleSelectEvent(e, 'results')}
 				/>
 			{/if}
 		{/snippet}
@@ -291,7 +284,7 @@
 				<BottomSheet
 					snap={sheetSnap}
 					heights={sheetHeights}
-					onSnapChange={(s) => (sheetSnap = s)}
+					onSnapChange={handleSnapChange}
 					onClose={handleClosePanel}
 				>
 					{#snippet header()}
@@ -303,17 +296,17 @@
 								prev={selectedLane.prev}
 								next={selectedLane.next}
 								onStep={handleStep}
-								onOpen={() => (sheetSnap = 'half')}
+								onOpen={() => handleSnapChange('half')}
 								onClose={handleClosePanel}
 							/>
 						{:else if sheetSnap === 'peek'}
-							<button class="sheet-summary" type="button" onclick={() => (sheetSnap = 'half')}>
+							<button class="sheet-summary" type="button" onclick={() => handleSnapChange('half')}>
 								{hits.length} results for &ldquo;{searchTerm.trim()}&rdquo; &uarr;
 							</button>
 						{:else}
 							<div class="sheet-bar">
 								{#if resultsOpen && selectedEvent}
-									<button class="back-btn" type="button" onclick={() => (selectedEvent = null)}
+									<button class="back-btn" type="button" onclick={handleBackToResults}
 										>&larr; Back to results</button
 									>
 								{/if}
@@ -330,7 +323,7 @@
 			<SidePanel
 				open={panelOpen}
 				onClose={handleClosePanel}
-				onBack={resultsOpen && selectedEvent ? () => (selectedEvent = null) : undefined}
+				onBack={resultsOpen && selectedEvent ? handleBackToResults : undefined}
 			>
 				{@render panelContent()}
 			</SidePanel>
