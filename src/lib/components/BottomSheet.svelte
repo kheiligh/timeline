@@ -118,8 +118,8 @@
 		flex-shrink: 0;
 		display: flex;
 		flex-direction: column;
-		background: #12121c;
-		border-top: 1px solid #2a2a3a;
+		background: var(--surface);
+		border-top: 1px solid var(--border);
 		border-radius: 14px 14px 0 0;
 		box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.45);
 		overflow: hidden;
@@ -146,7 +146,7 @@
 		width: 36px;
 		height: 4px;
 		border-radius: 2px;
-		background: #3a3a5a;
+		background: var(--border-strong);
 		margin: 8px auto 4px;
 	}
 

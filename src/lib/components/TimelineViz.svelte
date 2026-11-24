@@ -343,7 +343,7 @@
 		<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 		<svg width={containerWidth} height={totalHeight} onclick={handleSvgClick}>
 			<!-- Background -->
-			<rect width={containerWidth} height={totalHeight} fill="#0d0d12" />
+			<rect width={containerWidth} height={totalHeight} style="fill: var(--bg)" />
 
 			<!-- Gridlines and year labels -->
 			{#each yearLabels as label}
@@ -352,7 +352,7 @@
 					y1={label.y}
 					x2={containerWidth - RIGHT_PADDING}
 					y2={label.y}
-					stroke="#2a2a3a"
+					style="stroke: var(--border)"
 					stroke-width="1"
 				/>
 				<text
@@ -375,7 +375,7 @@
 						y1={TOP_PADDING}
 						x2={band.centerX - laneWidth / 2}
 						y2={totalHeight - 40}
-						stroke="#1e1e2e"
+						style="stroke: var(--border-faint)"
 						stroke-width="1"
 					/>
 				{/if}
@@ -401,7 +401,7 @@
 						cy={event.y}
 						r={hoveredEvent?.id === event.id ? DOT_RADIUS + 2 : DOT_RADIUS}
 						fill={band.continent.color}
-						stroke="#0d0d12"
+						style="stroke: var(--bg)"
 						stroke-width="1.5"
 						class="event-dot"
 						class:dimmed={isDimmed(event.id)}
@@ -424,7 +424,7 @@
 						cy={selectedDot.y}
 						r={DOT_RADIUS + 4}
 						fill="none"
-						stroke="#e8e0d0"
+						style="stroke: var(--text-strong)"
 						stroke-width="2"
 						class="selected-ring"
 						pointer-events="none"
@@ -443,8 +443,7 @@
 					width={tw + 12}
 					height={42}
 					rx="6"
-					fill="#1a1a2e"
-					stroke="#3a3a5a"
+					style="fill: var(--surface-hover); stroke: var(--border-strong)"
 					stroke-width="1"
 					opacity="0.95"
 				/>
@@ -463,7 +462,7 @@
 		display: flex;
 		flex-direction: column;
 		height: 100%;
-		background: #0d0d12;
+		background: var(--bg);
 	}
 
 	.continent-labels {
@@ -471,8 +470,8 @@
 		position: sticky;
 		top: 0;
 		z-index: 10;
-		background: #0d0d12;
-		border-bottom: 1px solid #2a2a3a;
+		background: var(--bg);
+		border-bottom: 1px solid var(--border);
 		padding-top: 10px;
 		padding-bottom: 10px;
 		flex-shrink: 0;
@@ -502,11 +501,11 @@
 		transform: translateY(-50%);
 		font-size: 10px;
 		font-family: 'Cousine', 'Courier New', monospace;
-		color: #4a4a6a;
-		background: #1a1a2e;
+		color: var(--text-faint);
+		background: var(--surface-hover);
 		padding: 2px 6px;
 		border-radius: 3px;
-		border: 1px solid #2a2a3a;
+		border: 1px solid var(--border);
 	}
 
 	.scroll-area {
@@ -528,10 +527,10 @@
 		z-index: 5;
 		display: flex;
 		flex-direction: column;
-		border: 1px solid #2a2a3a;
+		border: 1px solid var(--border);
 		border-radius: 10px;
 		overflow: hidden;
-		background: rgba(20, 20, 31, 0.92);
+		background: rgba(6, 32, 74, 0.94);
 		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 	}
 
@@ -540,7 +539,7 @@
 		height: 44px;
 		background: none;
 		border: none;
-		color: #c0b8b0;
+		color: var(--text);
 		font-size: 22px;
 		line-height: 1;
 		cursor: pointer;
@@ -548,20 +547,20 @@
 	}
 
 	.zoom-controls button + button {
-		border-top: 1px solid #2a2a3a;
+		border-top: 1px solid var(--border);
 	}
 
 	.zoom-controls button:active:not(:disabled) {
-		background: #1e1e32;
+		background: var(--surface-hover);
 	}
 
 	.zoom-controls button:disabled {
-		color: #3a3a5a;
+		color: var(--text-faint);
 	}
 
 	.year-label {
 		font-size: 10px;
-		fill: #7a7a9a;
+		fill: var(--text-muted);
 		font-family: 'Cousine', 'Courier New', monospace;
 		letter-spacing: -0.02em;
 	}
@@ -604,13 +603,13 @@
 	.tooltip-title {
 		font-family: var(--font-display);
 		font-size: 12px;
-		fill: #e8e0d0;
+		fill: var(--text-strong);
 		font-weight: 600;
 	}
 
 	.tooltip-year {
 		font-size: 10px;
-		fill: #8a8aaa;
+		fill: var(--text-muted);
 		font-family: 'Cousine', 'Courier New', monospace;
 	}
 </style>

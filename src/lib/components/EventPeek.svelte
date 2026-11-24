@@ -61,7 +61,7 @@
 		width: 44px;
 		background: none;
 		border: none;
-		color: #9a9ab8;
+		color: var(--text-muted);
 		font-size: 30px;
 		line-height: 1;
 		cursor: pointer;
@@ -69,11 +69,11 @@
 	}
 
 	.step:active:not(:disabled) {
-		background: #1e1e32;
+		background: var(--surface-hover);
 	}
 
 	.step:disabled {
-		color: #2e2e44;
+		color: var(--text-faint);
 		cursor: default;
 	}
 
@@ -99,7 +99,7 @@
 		gap: 6px;
 		font-family: 'Cousine', 'Courier New', monospace;
 		font-size: 11px;
-		color: #8a8aaa;
+		color: var(--text-muted);
 	}
 
 	.dot {
@@ -113,7 +113,7 @@
 		font-family: var(--font-display);
 		font-size: 16px;
 		font-weight: 600;
-		color: #e8e0d0;
+		color: var(--text-strong);
 		line-height: 1.25;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
@@ -124,7 +124,7 @@
 
 	.open {
 		font-size: 12px;
-		color: #7a7ac8;
+		color: var(--link);
 	}
 
 	.close {
@@ -135,7 +135,7 @@
 		height: 32px;
 		background: none;
 		border: none;
-		color: #5a5a7a;
+		color: var(--text-dim);
 		font-size: 13px;
 		cursor: pointer;
 	}
