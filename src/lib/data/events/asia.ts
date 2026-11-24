@@ -360,7 +360,7 @@ export const asiaEvents: TimelineEvent[] = [
 		title: 'The Persian Royal Road',
 		year: -500,
 		description:
-			"Darius I improved a 2,700-km road from Sardis to Susa, with relay stations where couriers changed horses. Messages crossed the empire in about a week.",
+			"Darius I improved a 2,700-km road from Sardis to Susa, with relay stations where couriers changed horses. Couriers were expected to cover the route in about nine days.",
 		significance:
 			"Herodotus's description of its couriers — \"neither snow nor rain nor heat\" — became the unofficial motto of the US Postal Service. Infrastructure is how empires hold together.",
 		wikipediaSlug: 'Royal_Road',
@@ -1280,7 +1280,7 @@ export const asiaEvents: TimelineEvent[] = [
 		title: 'Atomic Bomb — Hiroshima',
 		year: 1945,
 		description:
-			'The United States dropped atomic bombs on Hiroshima (Aug 6) and Nagasaki (Aug 9), killing over 200,000 people and bringing World War II to an end.',
+			'The United States dropped atomic bombs on Hiroshima (Aug 6) and Nagasaki (Aug 9), killing an estimated 150,000 to 246,000 people and bringing World War II to an end.',
 		significance:
 			"Nuclear weapons fundamentally changed warfare and international relations — making a direct war between great powers potentially civilization-ending.",
 		wikipediaSlug: 'Atomic_bombings_of_Hiroshima_and_Nagasaki',
@@ -1519,7 +1519,7 @@ export const asiaEvents: TimelineEvent[] = [
 		title: 'Indian Ocean Tsunami',
 		year: 2004,
 		description:
-			"A magnitude 9.1 earthquake off Sumatra triggered tsunamis that killed around 230,000 people in 14 countries.",
+			"A magnitude 9.1–9.3 earthquake off Sumatra triggered tsunamis that killed around 230,000 people in 14 countries.",
 		significance:
 			"One of the deadliest natural disasters in history led to the creation of an Indian Ocean tsunami warning system.",
 		wikipediaSlug: '2004_Indian_Ocean_earthquake_and_tsunami',
