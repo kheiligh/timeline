@@ -91,7 +91,7 @@
 	.year-badge {
 		font-family: 'Cousine', 'Courier New', monospace;
 		font-size: 12px;
-		color: #8a8aaa;
+		color: var(--text-muted);
 		letter-spacing: 0.05em;
 		margin-bottom: 12px;
 	}
@@ -104,7 +104,7 @@
 		font-family: var(--font-display);
 		font-size: 26px;
 		font-weight: 700;
-		color: #e8e0d0;
+		color: var(--text-strong);
 		line-height: 1.2;
 		margin: 0 0 16px 0;
 		letter-spacing: -0.02em;
@@ -122,11 +122,11 @@
 		font-weight: 600;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		color: #6a6a9a;
-		background: #1e1e30;
+		color: var(--text-dim);
+		background: var(--surface-hover);
 		padding: 3px 8px;
 		border-radius: 3px;
-		border: 1px solid #2a2a4a;
+		border: 1px solid var(--border);
 	}
 
 	.section {
@@ -138,30 +138,30 @@
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
-		color: #5a5a7a;
+		color: var(--text-dim);
 		margin: 0 0 8px 0;
 	}
 
 	.body-text {
 		font-size: 15px;
-		color: #c0b8b0;
+		color: var(--text);
 		line-height: 1.65;
 		margin: 0;
 	}
 
 	.significance {
-		background: #15152a;
-		border-left: 3px solid #3a3a6a;
+		background: var(--surface-raised);
+		border-left: 3px solid var(--border-strong);
 		padding: 16px 20px;
 		border-radius: 0 6px 6px 0;
 	}
 
 	.significance .section-label {
-		color: #7a7aaa;
+		color: var(--text-dim);
 	}
 
 	.significance .body-text {
-		color: #d0c8c0;
+		color: var(--text);
 	}
 
 	.connection-list {
@@ -174,8 +174,8 @@
 	.connection {
 		width: 100%;
 		text-align: left;
-		background: #15152a;
-		border: 1px solid #2a2a4a;
+		background: var(--surface-raised);
+		border: 1px solid var(--border);
 		border-radius: 4px;
 		padding: 8px 12px;
 		cursor: pointer;
@@ -188,8 +188,8 @@
 
 	.connection:hover,
 	.connection:focus-visible {
-		border-color: #4a4a7a;
-		background: #1a1a32;
+		border-color: var(--border-focus);
+		background: var(--surface-hover);
 	}
 
 	.connection-meta {
@@ -198,7 +198,7 @@
 		gap: 6px;
 		font-family: 'Cousine', 'Courier New', monospace;
 		font-size: 11px;
-		color: #7a7a9a;
+		color: var(--text-muted);
 	}
 
 	.connection-dot {
@@ -211,7 +211,7 @@
 	.connection-title {
 		font-family: var(--font-display);
 		font-size: 14px;
-		color: #d0c8c0;
+		color: var(--text);
 	}
 
 	.wiki-link {
@@ -220,16 +220,16 @@
 		gap: 4px;
 		margin-top: 28px;
 		font-size: 13px;
-		color: #7a7ac8;
+		color: var(--link);
 		text-decoration: none;
-		border-bottom: 1px solid #3a3a6a;
+		border-bottom: 1px solid var(--border-strong);
 		padding-bottom: 2px;
 		transition: color 0.15s, border-color 0.15s;
 	}
 
 	.wiki-link:hover {
-		color: #aaaaee;
-		border-color: #6a6aaa;
+		color: var(--link-hover);
+		border-color: var(--border-hover);
 	}
 
 	.arrow {

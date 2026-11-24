@@ -346,8 +346,8 @@
 	}
 
 	:global(body) {
-		background: #0d0d12;
-		color: #e8e0d0;
+		background: var(--bg);
+		color: var(--text);
 		font-family: 'Cousine', 'Courier New', monospace;
 		-webkit-font-smoothing: antialiased;
 		overflow: hidden;
@@ -362,8 +362,8 @@
 
 	.header {
 		height: 52px;
-		background: #0d0d12;
-		border-bottom: 1px solid #1e1e2e;
+		background: var(--bg);
+		border-bottom: 1px solid var(--border-faint);
 		flex-shrink: 0;
 		display: flex;
 		align-items: center;
@@ -384,14 +384,14 @@
 		font-family: var(--font-display);
 		font-size: 15px;
 		font-weight: 700;
-		color: #e8e0d0;
+		color: var(--text-strong);
 		letter-spacing: -0.02em;
 	}
 
 	.site-subtitle {
 		font-size: 11px;
 		font-family: 'Cousine', 'Courier New', monospace;
-		color: #4a4a6a;
+		color: var(--text-faint);
 		letter-spacing: 0.04em;
 	}
 
@@ -436,9 +436,9 @@
 		z-index: 6;
 		padding: 9px 16px;
 		border-radius: 999px;
-		background: rgba(26, 26, 46, 0.95);
-		border: 1px solid #3a3a5a;
-		color: #e8e0d0;
+		background: rgba(14, 44, 92, 0.95);
+		border: 1px solid var(--border-strong);
+		color: var(--text-strong);
 		font-size: 13px;
 		white-space: nowrap;
 		pointer-events: none;
@@ -464,7 +464,7 @@
 	.back-btn {
 		background: none;
 		border: none;
-		color: #7a7ac8;
+		color: var(--link);
 		font: inherit;
 		font-size: 14px;
 		cursor: pointer;
@@ -475,7 +475,7 @@
 		margin-left: auto;
 		background: none;
 		border: none;
-		color: #6a6a8a;
+		color: var(--text-dim);
 		font-size: 15px;
 		width: 40px;
 		height: 40px;
@@ -488,7 +488,7 @@
 		padding: 16px 20px;
 		background: none;
 		border: none;
-		color: #c0b8b0;
+		color: var(--text);
 		font: inherit;
 		font-size: 15px;
 		text-align: left;

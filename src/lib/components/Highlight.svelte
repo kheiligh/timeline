@@ -15,7 +15,7 @@
 
 <style>
 	mark {
-		background: rgba(232, 160, 69, 0.22);
+		background: rgba(240, 180, 101, 0.22);
 		color: inherit;
 		border-radius: 2px;
 		padding: 0 1px;

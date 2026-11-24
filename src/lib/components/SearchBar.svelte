@@ -262,18 +262,18 @@
 	}
 
 	.search.expanded .field {
-		background: #12121c;
-		border-color: #2a2a3a;
+		background: var(--surface);
+		border-color: var(--border);
 	}
 
 	.search.expanded .field:focus-within {
-		border-color: #4a4a7a;
+		border-color: var(--border-focus);
 	}
 
 	.icon-btn {
 		background: none;
 		border: none;
-		color: #6a6a8a;
+		color: var(--text-dim);
 		width: 32px;
 		height: 30px;
 		display: flex;
@@ -287,7 +287,7 @@
 
 	.icon-btn:hover,
 	.search.expanded .icon-btn {
-		color: #c0b8b0;
+		color: var(--text);
 	}
 
 	input {
@@ -297,7 +297,7 @@
 		border: none;
 		outline: none;
 		background: transparent;
-		color: #e8e0d0;
+		color: var(--text-strong);
 		font: inherit;
 		font-size: 13px;
 		transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -312,13 +312,13 @@
 	}
 
 	input::placeholder {
-		color: #4a4a6a;
+		color: var(--text-faint);
 	}
 
 	.clear-btn {
 		background: none;
 		border: none;
-		color: #5a5a7a;
+		color: var(--text-dim);
 		font-size: 11px;
 		width: 26px;
 		height: 26px;
@@ -327,7 +327,7 @@
 	}
 
 	.clear-btn:hover {
-		color: #e8e0d0;
+		color: var(--text-strong);
 	}
 
 	.dropdown {
@@ -337,8 +337,8 @@
 		width: min(440px, calc(100vw - 32px));
 		max-height: calc(100vh - 80px);
 		overflow-y: auto;
-		background: #14141f;
-		border: 1px solid #2a2a3a;
+		background: var(--surface);
+		border: 1px solid var(--border);
 		border-radius: 8px;
 		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
 		z-index: 100;
@@ -365,7 +365,7 @@
 	}
 
 	.hit.active {
-		background: #1e1e32;
+		background: var(--surface-hover);
 	}
 
 	.meta {
@@ -374,7 +374,7 @@
 		gap: 6px;
 		font-family: 'Cousine', 'Courier New', monospace;
 		font-size: 10.5px;
-		color: #7a7a9a;
+		color: var(--text-muted);
 	}
 
 	.dot {
@@ -387,12 +387,12 @@
 	.title {
 		font-family: var(--font-display);
 		font-size: 14px;
-		color: #e8e0d0;
+		color: var(--text-strong);
 	}
 
 	.snippet {
 		font-size: 12px;
-		color: #8a8aa0;
+		color: var(--text-muted);
 		line-height: 1.4;
 	}
 
@@ -401,9 +401,9 @@
 		font-weight: 700;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		color: #6a6a9a;
-		background: #1e1e30;
-		border: 1px solid #2a2a4a;
+		color: var(--text-dim);
+		background: var(--surface-hover);
+		border: 1px solid var(--border);
 		border-radius: 3px;
 		padding: 1px 5px;
 		margin-right: 4px;
@@ -416,8 +416,8 @@
 		padding: 10px;
 		background: none;
 		border: none;
-		border-top: 1px solid #22222f;
-		color: #7a7ac8;
+		border-top: 1px solid var(--border-faint);
+		color: var(--link);
 		font: inherit;
 		font-size: 13px;
 		text-align: left;
@@ -425,14 +425,14 @@
 	}
 
 	.see-all:hover {
-		color: #aaaaee;
+		color: var(--link-hover);
 	}
 
 	.empty {
 		padding: 14px 12px;
 		font-size: 13px;
 		line-height: 1.5;
-		color: #8a8aa0;
+		color: var(--text-muted);
 	}
 
 	/* Phone layout: the icon expands into a full-width field over the site title. */

@@ -22,7 +22,30 @@
 			@font-face { font-family: 'Cousine'; src: url('%sveltekit.assets%/fonts/Cousine-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
 			@font-face { font-family: 'Cousine'; src: url('%sveltekit.assets%/fonts/Cousine-Italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
 			@font-face { font-family: 'Cousine'; src: url('%sveltekit.assets%/fonts/Cousine-BoldItalic.woff2') format('woff2'); font-weight: 700; font-style: italic; font-display: swap; }
-			:root { --font-display: 'Castoro Titling', Georgia, 'Times New Roman', serif; }
+			:root {
+				--font-display: 'Castoro Titling', Georgia, 'Times New Roman', serif;
+
+				/* Palette: deep navy surfaces (lightest = most raised), warm tan text. */
+				--bg: #001538;
+				--surface: #061d45;
+				--surface-raised: #0a2550;
+				--surface-hover: #0f2d5e;
+
+				--border-faint: #0c2756;
+				--border: #183a6e;
+				--border-strong: #264b85;
+				--border-focus: #3a62a3;
+				--border-hover: #5578b5;
+
+				--text-strong: #e6d6c0;
+				--text: #c2ae97;
+				--text-muted: #a39480;
+				--text-dim: #877b6b;
+				--text-faint: #64708a;
+
+				--link: #8fb0e6;
+				--link-hover: #bcd0f2;
+			}
 		</style>
 		%sveltekit.head%
 	</head>

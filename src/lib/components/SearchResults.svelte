@@ -105,13 +105,13 @@
 	.heading {
 		font-size: 20px;
 		font-weight: 700;
-		color: #e8e0d0;
+		color: var(--text-strong);
 		letter-spacing: -0.02em;
 	}
 
 	.sort {
 		display: flex;
-		border: 1px solid #2a2a4a;
+		border: 1px solid var(--border);
 		border-radius: 5px;
 		overflow: hidden;
 		flex-shrink: 0;
@@ -120,7 +120,7 @@
 	.sort button {
 		background: none;
 		border: none;
-		color: #6a6a8a;
+		color: var(--text-dim);
 		font: inherit;
 		font-size: 11px;
 		font-weight: 600;
@@ -131,8 +131,8 @@
 	}
 
 	.sort button.active {
-		background: #1e1e32;
-		color: #e8e0d0;
+		background: var(--surface-hover);
+		color: var(--text-strong);
 	}
 
 	.list {
@@ -145,8 +145,8 @@
 	.hit {
 		width: 100%;
 		text-align: left;
-		background: #15152a;
-		border: 1px solid #2a2a4a;
+		background: var(--surface-raised);
+		border: 1px solid var(--border);
 		border-radius: 4px;
 		padding: 10px 14px;
 		cursor: pointer;
@@ -162,8 +162,8 @@
 
 	.hit:hover,
 	.hit:focus-visible {
-		border-color: #4a4a7a;
-		background: #1a1a32;
+		border-color: var(--border-focus);
+		background: var(--surface-hover);
 	}
 
 	.meta {
@@ -172,7 +172,7 @@
 		gap: 6px;
 		font-family: 'Cousine', 'Courier New', monospace;
 		font-size: 11px;
-		color: #7a7a9a;
+		color: var(--text-muted);
 	}
 
 	.dot {
@@ -185,12 +185,12 @@
 	.title {
 		font-family: var(--font-display);
 		font-size: 15px;
-		color: #e8e0d0;
+		color: var(--text-strong);
 	}
 
 	.snippet {
 		font-size: 13px;
-		color: #8a8aa0;
+		color: var(--text-muted);
 		line-height: 1.45;
 	}
 
@@ -199,9 +199,9 @@
 		font-weight: 700;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		color: #6a6a9a;
-		background: #1e1e30;
-		border: 1px solid #2a2a4a;
+		color: var(--text-dim);
+		background: var(--surface-hover);
+		border: 1px solid var(--border);
 		border-radius: 3px;
 		padding: 1px 5px;
 		margin-right: 4px;
@@ -211,7 +211,7 @@
 	.empty {
 		font-size: 15px;
 		line-height: 1.6;
-		color: #8a8aa0;
+		color: var(--text-muted);
 		margin-top: 8px;
 	}
 
