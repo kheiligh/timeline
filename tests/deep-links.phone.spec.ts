@@ -47,7 +47,7 @@ async function dragSheetTo(page: Page, toY: number) {
 }
 
 async function openToHalf(page: Page, id: string) {
-	await page.goto('/');
+	await page.goto('/', { waitUntil: 'networkidle' });
 	await dot(page, id).tap();
 	await expectOpen(page, id);
 	await expectSnap(page, 'peek');
@@ -64,7 +64,7 @@ async function expandToFull(page: Page) {
 test('tapping a dot shows the peek card and puts the event in the URL; Back closes it', async ({
 	page
 }) => {
-	await page.goto('/');
+	await page.goto('/', { waitUntil: 'networkidle' });
 	await dot(page, A).tap();
 	await expectOpen(page, A);
 	await expectSnap(page, 'peek');
@@ -76,7 +76,7 @@ test('tapping a dot shows the peek card and puts the event in the URL; Back clos
 
 test('stepping ‹ › on the peek card replaces the entry', async ({ page }) => {
 	const next = nextInLane(A);
-	await page.goto('/');
+	await page.goto('/', { waitUntil: 'networkidle' });
 	await dot(page, A).tap();
 	await expectOpen(page, A);
 	await page.getByRole('button', { name: /^Next:/ }).click();

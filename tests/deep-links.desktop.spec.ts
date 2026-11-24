@@ -18,7 +18,7 @@ const close = (page: import('@playwright/test').Page) =>
 	page.getByRole('button', { name: 'Close', exact: true }).click();
 
 test('clicking a dot puts the event in the URL; Back closes it, Forward re-opens it', async ({ page }) => {
-	await page.goto('/');
+	await page.goto('/', { waitUntil: 'networkidle' });
 	await dot(page, A).click();
 	await expectOpen(page, A);
 
@@ -30,7 +30,7 @@ test('clicking a dot puts the event in the URL; Back closes it, Forward re-opens
 });
 
 test('connections are real links, and Back retraces the trail', async ({ page }) => {
-	await page.goto('/');
+	await page.goto('/', { waitUntil: 'networkidle' });
 	await dot(page, A).click();
 	await expect(connectionLink(page, B)).toHaveAttribute('href', `/event/${B}`);
 
@@ -50,7 +50,7 @@ test('connections are real links, and Back retraces the trail', async ({ page })
 test('clicking another dot while one is open replaces it rather than adding to history', async ({
 	page
 }) => {
-	await page.goto('/');
+	await page.goto('/', { waitUntil: 'networkidle' });
 	await dot(page, A).click();
 	await expectOpen(page, A);
 	await dot(page, B).click();
@@ -63,7 +63,7 @@ test('clicking another dot while one is open replaces it rather than adding to h
 test('Close returns to before the panel opened, and Forward picks the trail back up', async ({
 	page
 }) => {
-	await page.goto('/');
+	await page.goto('/', { waitUntil: 'networkidle' });
 	await dot(page, A).click();
 	await connectionLink(page, B).click();
 	await expectOpen(page, B);
@@ -76,7 +76,7 @@ test('Close returns to before the panel opened, and Forward picks the trail back
 });
 
 test('Escape closes the panel', async ({ page }) => {
-	await page.goto('/');
+	await page.goto('/', { waitUntil: 'networkidle' });
 	await dot(page, A).click();
 	await expectOpen(page, A);
 	await page.keyboard.press('Escape');
@@ -84,7 +84,7 @@ test('Escape closes the panel', async ({ page }) => {
 });
 
 test('closing a trail that started on a shared link lands on the bare timeline', async ({ page }) => {
-	await page.goto(`/event/${A}`);
+	await page.goto(`/event/${A}`, { waitUntil: 'networkidle' });
 	await connectionLink(page, B).click();
 	await expectOpen(page, B);
 
@@ -99,11 +99,11 @@ test('closing a trail that started on a shared link lands on the bare timeline',
 test('after a reload, Close still steps back to the timeline instead of adding an entry', async ({
 	page
 }) => {
-	await page.goto('/');
+	await page.goto('/', { waitUntil: 'networkidle' });
 	await dot(page, A).click();
 	await expectOpen(page, A);
 
-	await page.reload();
+	await page.reload({ waitUntil: 'networkidle' });
 	await expectOpen(page, A);
 
 	await close(page);
@@ -113,7 +113,7 @@ test('after a reload, Close still steps back to the timeline instead of adding a
 });
 
 test('Ctrl/Cmd-click on a connection opens it in a new tab', async ({ page, context }) => {
-	await page.goto(`/event/${A}`);
+	await page.goto(`/event/${A}`, { waitUntil: 'networkidle' });
 	const [tab] = await Promise.all([
 		context.waitForEvent('page'),
 		connectionLink(page, B).click({ modifiers: ['ControlOrMeta'] })
@@ -127,7 +127,7 @@ test('Ctrl/Cmd-click on a connection opens it in a new tab', async ({ page, cont
 
 test('"Copy link" copies the event\'s address', async ({ page, context, baseURL }) => {
 	await context.grantPermissions(['clipboard-read', 'clipboard-write']);
-	await page.goto(`/event/${A}`);
+	await page.goto(`/event/${A}`, { waitUntil: 'networkidle' });
 	await page.getByRole('button', { name: 'Copy link' }).click();
 	await expect(page.getByRole('button', { name: 'Link copied' })).toBeVisible();
 	expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(`${baseURL}/event/${A}`);
@@ -138,7 +138,7 @@ test('"Copy link" copies the event\'s address', async ({ page, context, baseURL 
 });
 
 test('search results: open a result, go back to the list, then close', async ({ page }) => {
-	await page.goto('/');
+	await page.goto('/', { waitUntil: 'networkidle' });
 	await page.getByRole('button', { name: 'Search events' }).click();
 	await page.getByRole('combobox', { name: 'Search events' }).fill('abolition');
 	await page.keyboard.press('Enter');

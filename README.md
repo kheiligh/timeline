@@ -67,6 +67,8 @@ npm run check       # type check
 Unit tests sit next to the code they cover (`*.test.ts` under `src/`); browser tests are in `tests/`.
 If Playwright's own browser isn't installed, point it at another Chromium with
 `PLAYWRIGHT_CHROMIUM_PATH=/path/to/chrome npm run test:e2e`.
+To test a deployed site instead of a local build, set the base URL:
+`PLAYWRIGHT_BASE_URL=https://timeline-inky-five.vercel.app npm run test:e2e`.
 
 ## Event links
 
