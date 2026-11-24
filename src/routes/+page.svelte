@@ -348,7 +348,7 @@
 	:global(body) {
 		background: #0d0d12;
 		color: #e8e0d0;
-		font-family: 'Castoro Titling', Georgia, 'Times New Roman', serif;
+		font-family: 'Cousine', 'Courier New', monospace;
 		-webkit-font-smoothing: antialiased;
 		overflow: hidden;
 	}
@@ -381,6 +381,7 @@
 	}
 
 	.site-title {
+		font-family: var(--font-display);
 		font-size: 15px;
 		font-weight: 700;
 		color: #e8e0d0;

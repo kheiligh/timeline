@@ -101,6 +101,7 @@
 	}
 
 	.event-title {
+		font-family: var(--font-display);
 		font-size: 26px;
 		font-weight: 700;
 		color: #e8e0d0;
@@ -208,6 +209,7 @@
 	}
 
 	.connection-title {
+		font-family: var(--font-display);
 		font-size: 14px;
 		color: #d0c8c0;
 	}

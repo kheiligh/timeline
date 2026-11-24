@@ -183,6 +183,7 @@
 	}
 
 	.title {
+		font-family: var(--font-display);
 		font-size: 15px;
 		color: #e8e0d0;
 	}

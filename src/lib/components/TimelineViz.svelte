@@ -476,6 +476,7 @@
 	}
 
 	.continent-label {
+		font-family: var(--font-display);
 		text-align: center;
 		font-size: 11px;
 		font-weight: 600;
@@ -598,6 +599,7 @@
 	}
 
 	.tooltip-title {
+		font-family: var(--font-display);
 		font-size: 12px;
 		fill: #e8e0d0;
 		font-weight: 600;
