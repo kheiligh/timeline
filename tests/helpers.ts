@@ -31,7 +31,7 @@ export const connectionLink = (page: Page, id: string) =>
 	page.locator('a.connection', { hasText: titleOf(id) });
 
 export const eventUrl = (id: string) => new RegExp(`/event/${id}$`);
-export const homeUrl = /:\d+\/$/;
+export const homeUrl = (url: URL) => url.pathname === "/";
 
 /** The open event's heading: the details panel on desktop, or the peek card / sheet on phones. */
 export const openTitle = (page: Page) => page.locator('.event-title, .peek .title').first();

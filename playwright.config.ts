@@ -2,6 +2,10 @@ import { defineConfig, devices } from '@playwright/test';
 
 const PORT = 4173;
 
+// Set to run the tests against a deployed site instead of a local build,
+// e.g. PLAYWRIGHT_BASE_URL=https://timeline-inky-five.vercel.app npm run test:e2e
+const remoteURL = process.env.PLAYWRIGHT_BASE_URL;
+
 // Use a browser that's already installed (e.g. a CI image with a different Playwright version).
 const executablePath = process.env.PLAYWRIGHT_CHROMIUM_PATH || undefined;
 
@@ -17,7 +21,7 @@ export default defineConfig({
 	workers: process.env.CI ? 1 : undefined,
 	reporter: process.env.CI ? 'github' : 'list',
 	use: {
-		baseURL: `http://localhost:${PORT}`,
+		baseURL: remoteURL || `http://localhost:${PORT}`,
 		trace: 'on-first-retry',
 		launchOptions: { executablePath }
 	},
@@ -34,10 +38,12 @@ export default defineConfig({
 		}
 	],
 
-	webServer: {
-		command: `npm run build && npm run preview -- --port ${PORT} --strictPort`,
-		url: `http://localhost:${PORT}`,
-		reuseExistingServer: !process.env.CI,
-		timeout: 180_000
-	}
+	webServer: remoteURL
+		? undefined
+		: {
+				command: `npm run build && npm run preview -- --port ${PORT} --strictPort`,
+				url: `http://localhost:${PORT}`,
+				reuseExistingServer: !process.env.CI,
+				timeout: 180_000
+			}
 });
